@@ -1,9 +1,9 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class BankAccount
-{ 
+{
 
     /**
      * @var string
@@ -14,7 +14,7 @@ class BankAccount
      * @var string
      */
     public $taxNumber;
-    
+
     /**
      * @var string
      */
@@ -58,31 +58,31 @@ class BankAccount
      */
     public function __construct($data = [])
     {
-        if(isset($data['name'])) {
+        if (isset($data['name'])) {
             $this->name($data['name']);
         }
-        if(isset($data['taxNumber'])) {
+        if (isset($data['taxNumber'])) {
             $this->taxNumber($data['taxNumber']);
         }
-        if(isset($data['bank'])) {
+        if (isset($data['bank'])) {
             $this->bank($data['bank']);
         }
-        if(isset($data['bankBranch'])) {
+        if (isset($data['bankBranch'])) {
             $this->bankBranch($data['bankBranch']);
         }
-        if(isset($data['bankAccount'])) {
+        if (isset($data['bankAccount'])) {
             $this->bankAccount($data['bankAccount']);
         }
-        if(isset($data['bankAccountDigit'])) {
+        if (isset($data['bankAccountDigit'])) {
             $this->bankAccountDigit($data['bankAccountDigit']);
         }
-        if(isset($data['accountKey'])) {
+        if (isset($data['accountKey'])) {
             $this->accountKey($data['accountKey']);
         }
-        if(isset($data['spbAccount'])) {
+        if (isset($data['spbAccount'])) {
             $this->spbAccount($data['spbAccount']);
         }
-        if(isset($data['accountType'])) {
+        if (isset($data['accountType'])) {
             $this->accountType($data['accountType']);
         }
     }
@@ -175,7 +175,7 @@ class BankAccount
     public static function fromArray(array $data)
     {
         $model = new self();
-        foreach($data as $key => $value) {
+        foreach ($data as $key => $value) {
             $model->{lcfirst($key)}($value);
         }
         return $model;

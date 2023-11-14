@@ -1,8 +1,8 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
-use Hafael\Fitbank\Utils\Image;
+use Paguesafe\Fitbank\Utils\Image;
 
 class Document
 {
@@ -84,22 +84,22 @@ class Document
      */
     public function __construct($data = [])
     {
-        if(isset($data['documentFormat'])) {
+        if (isset($data['documentFormat'])) {
             $this->documentFormat($data['documentFormat']);
         }
-        if(isset($data['documentType'])) {
+        if (isset($data['documentType'])) {
             $this->documentType($data['documentType']);
         }
-        if(isset($data['documentFile'])) {
+        if (isset($data['documentFile'])) {
             $this->documentFile($data['documentFile']);
         }
-        if(isset($data['documentName'])) {
+        if (isset($data['documentName'])) {
             $this->documentName($data['documentName']);
         }
-        if(isset($data['description'])) {
+        if (isset($data['description'])) {
             $this->description($data['description']);
         }
-        if(isset($data['expirationDate'])) {
+        if (isset($data['expirationDate'])) {
             $this->expirationDate($data['expirationDate']);
         }
     }
@@ -110,7 +110,7 @@ class Document
     public static function fromImage(Image $image)
     {
         $document = (new Document())->documentFormat($image->formatCode())
-                                    ->documentFile($image->toBase64());
+            ->documentFile($image->toBase64());
 
         return $document;
     }
@@ -122,7 +122,7 @@ class Document
     public static function fromBase64($encodedImage, $format = DOCUMENT::FORMAT_JPG)
     {
         $document = (new Document())->documentFormat($format)
-                                    ->documentFile($encodedImage);
+            ->documentFile($encodedImage);
 
         return $document;
     }
@@ -172,12 +172,12 @@ class Document
      */
     public function documentFile(string $documentFile)
     {
-        
 
-        if(strpos($documentFile, 'data:') === false) {
+
+        if (strpos($documentFile, 'data:') === false) {
             $this->documentFile = $documentFile;
-        }else {
-            $data = explode( ',', $documentFile );
+        } else {
+            $data = explode(',', $documentFile);
             $this->documentFile = $data[1];
         }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class ChangePinCardRequest
 {
@@ -32,16 +32,16 @@ class ChangePinCardRequest
      */
     public function __construct($data = [])
     {
-        if(isset($data['identifierCard'])) {
+        if (isset($data['identifierCard'])) {
             $this->identifierCard($data['identifierCard']);
         }
-        if(isset($data['currentPin'])) {
+        if (isset($data['currentPin'])) {
             $this->currentPin($data['currentPin']);
         }
-        if(isset($data['pin'])) {
+        if (isset($data['pin'])) {
             $this->pin($data['pin']);
         }
-        if(isset($data['pinCheck'])) {
+        if (isset($data['pinCheck'])) {
             $this->pinCheck($data['pinCheck']);
         }
     }
@@ -101,12 +101,8 @@ class ChangePinCardRequest
             'CurrentPin'     => $this->currentPin,
             'Pin'            => $this->pin,
             'PinCheck'       => $this->pinCheck,
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }
-
-    
-
-
 }

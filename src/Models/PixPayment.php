@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class PixPayment
 {
@@ -45,7 +45,7 @@ class PixPayment
      * @var string
      */
     public $bankAccount;
-    
+
     /**
      * @var string
      */
@@ -85,7 +85,7 @@ class PixPayment
      * @var string
      */
     public $expirationDate;
-    
+
     /**
      * @var float
      */
@@ -170,7 +170,7 @@ class PixPayment
      * @var mixed
      */
     public $address;
-    
+
     /**
      * Model constructor.
      * 
@@ -178,55 +178,55 @@ class PixPayment
      */
     public function __construct($data = [])
     {
-        if(isset($data['taxNumber'])) {
+        if (isset($data['taxNumber'])) {
             $this->taxNumber($data['taxNumber']);
         }
-        if(isset($data['bank'])) {
+        if (isset($data['bank'])) {
             $this->bank($data['bank']);
         }
-        if(isset($data['bankBranch'])) {
+        if (isset($data['bankBranch'])) {
             $this->bankBranch($data['bankBranch']);
         }
-        if(isset($data['bankAccount'])) {
+        if (isset($data['bankAccount'])) {
             $this->bankAccount($data['bankAccount']);
         }
-        if(isset($data['bankAccountDigit'])) {
+        if (isset($data['bankAccountDigit'])) {
             $this->bankAccountDigit($data['bankAccountDigit']);
         }
-        if(isset($data['toKey'])) {
+        if (isset($data['toKey'])) {
             $this->toKey($data['toKey']);
         }
-        if(isset($data['fromKey'])) {
+        if (isset($data['fromKey'])) {
             $this->fromKey($data['fromKey']);
         }
-        if(isset($data['paymentDate'])) {
+        if (isset($data['paymentDate'])) {
             $this->paymentDate($data['paymentDate']);
         }
-        if(isset($data['value'])) {
+        if (isset($data['value'])) {
             $this->value($data['value']);
         }
-        if(isset($data['rateValue'])) {
+        if (isset($data['rateValue'])) {
             $this->rateValue($data['rateValue']);
         }
-        if(isset($data['rateValueType'])) {
+        if (isset($data['rateValueType'])) {
             $this->rateValueType($data['rateValueType']);
         }
-        if(isset($data['identifier'])) {
+        if (isset($data['identifier'])) {
             $this->identifier($data['identifier']);
         }
-        if(isset($data['description'])) {
+        if (isset($data['description'])) {
             $this->description($data['description']);
         }
-        if(isset($data['onlineTransfer'])) {
+        if (isset($data['onlineTransfer'])) {
             $this->onlineTransfer($data['onlineTransfer']);
         }
-        if(isset($data['searchProtocol'])) {
+        if (isset($data['searchProtocol'])) {
             $this->searchProtocol($data['searchProtocol']);
         }
-        if(isset($data['customerMessage'])) {
+        if (isset($data['customerMessage'])) {
             $this->customerMessage($data['customerMessage']);
         }
-        if(isset($data['status'])) {
+        if (isset($data['status'])) {
             $this->status($data['status']);
         }
     }
@@ -502,7 +502,7 @@ class PixPayment
             //From(PixIn)
             'payerName'             => $this->fromKey ? $this->fromKey->name : null,
             'payerTaxNumber'        => $this->fromKey ? $this->fromKey->taxNumber : null,
-            
+
             /////////00
             'ChangeType'            => $this->changeType,
             'reusable'              => $this->reusable,
@@ -515,7 +515,7 @@ class PixPayment
             'TransactionChangeType' => $this->transactionChangeType,
             'AgentModality'         => $this->agentModality,
             'Address'               => $this->address,
-            
+
             //To
             'ToName'                => $this->toKey->name,
             'ToTaxNumber'           => $this->toKey->taxNumber,
@@ -536,12 +536,12 @@ class PixPayment
             'CustomerMessage'       => $this->customerMessage,
             //Condition
             'Status'                => $this->status,
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }
 
-    public function toSendPixOut() 
+    public function toSendPixOut()
     {
         return array_filter(array_merge($this->toArray(), [
 
@@ -554,7 +554,7 @@ class PixPayment
             'BankBranch'       => $this->bankBranch,
             'BankAccount'      => $this->bankAccount,
             'BankAccountDigit' => $this->bankAccountDigit,
-        ]), function($k) {
+        ]), function ($k) {
             return in_array($k, [
                 'FromTaxNumber',
                 'ToTaxNumber',
@@ -594,7 +594,7 @@ class PixPayment
             'BankBranch'       => $this->fromKey->bankBranch,
             'BankAccount'      => $this->fromKey->bankAccount,
             'BankAccountDigit' => $this->fromKey->bankAccountDigit,
-        ]), function($k) {
+        ]), function ($k) {
             return in_array($k, [
                 'PixKey',
                 'TaxNumber',

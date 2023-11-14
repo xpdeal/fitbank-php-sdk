@@ -1,13 +1,13 @@
 <?php
 
-namespace Hafael\Fitbank\Api;
+namespace Paguesafe\Fitbank\Api;
 
-use Hafael\Fitbank\Route;
-use Hafael\Fitbank\Models\Account as AccountModel;
-use Hafael\Fitbank\Models\BankAccount;
-use Hafael\Fitbank\Models\CloseAccount;
-use Hafael\Fitbank\Models\NewAccount;
-use Hafael\Fitbank\Models\Person;
+use Paguesafe\Fitbank\Route;
+use Paguesafe\Fitbank\Models\Account as AccountModel;
+use Paguesafe\Fitbank\Models\BankAccount;
+use Paguesafe\Fitbank\Models\CloseAccount;
+use Paguesafe\Fitbank\Models\NewAccount;
+use Paguesafe\Fitbank\Models\Person;
 
 class Account extends Api
 {
@@ -69,16 +69,16 @@ class Account extends Api
      */
     public function getAccountEntry(BankAccount $account, $startDate = null, $endDate = null, $onlyBalance = false, $entryType = null)
     {
-        if(is_null($startDate)) $startDate = date('Y/m/d');
+        if (is_null($startDate)) $startDate = date('Y/m/d');
 
-        if(is_null($endDate)) $endDate = date('Y/m/d');
+        if (is_null($endDate)) $endDate = date('Y/m/d');
 
         return $this->client->post(new Route(), $this->getBody(array_merge([
             'Method'                  => 'GetAccountEntry',
             'TaxNumber'               => $account->taxNumber,
             'StartDate'               => $startDate,
             'EndDate'                 => $endDate,
-            'OnlyBalance'             => !$onlyBalance ? 'false': 'true',
+            'OnlyBalance'             => !$onlyBalance ? 'false' : 'true',
             'EntryClassificationType' => $entryType,
         ], $account->toArray())));
     }
@@ -97,15 +97,15 @@ class Account extends Api
      */
     public function getAccountEntryPaged(BankAccount $account, $startDate = null, $endDate = null, $onlyBalance = false, $entryType = null, $pageSize = 10, $index = 1)
     {
-        if(is_null($startDate)) $startDate = date('Y/m/d');
+        if (is_null($startDate)) $startDate = date('Y/m/d');
 
-        if(is_null($endDate)) $endDate = date('Y/m/d');
+        if (is_null($endDate)) $endDate = date('Y/m/d');
 
         return $this->client->post(new Route(), $this->getBody(array_merge([
             'Method'                  => 'GetAccountEntryPaged',
             'StartDate'               => $startDate,
             'EndDate'                 => $endDate,
-            'OnlyBalance'             => !$onlyBalance ? 'false': 'true',
+            'OnlyBalance'             => !$onlyBalance ? 'false' : 'true',
             'EntryClassificationType' => $entryType,
             'PageSize'                => $pageSize,
             'Index'                   => $index,
@@ -172,7 +172,9 @@ class Account extends Api
         return $this->client->post(new Route(), $this->getBody([
             'Method' => 'ResendDocuments',
             'TaxNumber' => $account->holder()->taxNumber,
-            'Documents' => array_map(function($document){return $document->toArray();}, $account->documents),
+            'Documents' => array_map(function ($document) {
+                return $document->toArray();
+            }, $account->documents),
         ]));
     }
 
@@ -203,7 +205,8 @@ class Account extends Api
         return $this->client->post(new Route(), $this->getBody(
             array_merge([
                 'Method' => 'UpdatePersonData',
-            ], $account->toArray())));
+            ], $account->toArray())
+        ));
     }
 
     /**
@@ -217,7 +220,8 @@ class Account extends Api
         return $this->client->post(new Route(), $this->getBody(
             array_merge([
                 'Method' => 'CheckAccountPerson',
-            ], $person->toArray())));
+            ], $person->toArray())
+        ));
     }
 
     /**
@@ -266,7 +270,8 @@ class Account extends Api
                 'Type' => $type,
                 'OperationType' => $opType,
                 'SubType' => $subType,
-            ], $account->toArray())));
+            ], $account->toArray())
+        ));
     }
 
     /**
@@ -280,13 +285,14 @@ class Account extends Api
      * @param float $maxLimit
      * @return mixed
      */
-    public function changeAccountOperationLimit(AccountModel $account, 
-                                                int $type = 0, 
-                                                int $opType = 0, 
-                                                int $subType = 0,
-                                                float $minLimit,
-                                                float $maxLimit)
-    {
+    public function changeAccountOperationLimit(
+        AccountModel $account,
+        int $type = 0,
+        int $opType = 0,
+        int $subType = 0,
+        float $minLimit,
+        float $maxLimit
+    ) {
         return $this->client->post(new Route(), $this->getBody(
             array_merge([
                 'Method' => 'ChangeAccountOperationLimit',
@@ -295,7 +301,7 @@ class Account extends Api
                 'SubType' => $subType,
                 'MinLimitValue' => $minLimit,
                 'MaxLimitValue' => $maxLimit,
-            ], $account->toArray())));
+            ], $account->toArray())
+        ));
     }
-
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Contracts;
+namespace Paguesafe\Fitbank\Contracts;
 
 /**
  * RouteInterface

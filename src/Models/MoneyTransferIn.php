@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class MoneyTransferIn
 {
@@ -13,7 +13,7 @@ class MoneyTransferIn
      * @var string
      */
     public $documentNumber;
-    
+
     /**
      * @var string
      */
@@ -84,7 +84,7 @@ class MoneyTransferIn
      */
     public $status;
 
-    
+
     /**
      * Model constructor.
      * 
@@ -92,46 +92,46 @@ class MoneyTransferIn
      */
     public function __construct($data = [])
     {
-        if(isset($data['fromBank'])) {
+        if (isset($data['fromBank'])) {
             $this->fromBank($data['fromBank']);
         }
-        if(isset($data['toBank'])) {
+        if (isset($data['toBank'])) {
             $this->toBank($data['toBank']);
         }
-        if(isset($data['supplierName'])) {
+        if (isset($data['supplierName'])) {
             $this->supplierName($data['supplierName']);
         }
-        if(isset($data['supplierTradingName'])) {
+        if (isset($data['supplierTradingName'])) {
             $this->supplierTradingName($data['supplierTradingName']);
         }
-        if(isset($data['supplierTaxNumber'])) {
+        if (isset($data['supplierTaxNumber'])) {
             $this->supplierTaxNumber($data['supplierTaxNumber']);
         }
-        if(isset($data['supplierMail'])) {
+        if (isset($data['supplierMail'])) {
             $this->supplierMail($data['supplierMail']);
         }
-        if(isset($data['supplierPhone'])) {
+        if (isset($data['supplierPhone'])) {
             $this->supplierPhone($data['supplierPhone']);
         }
-        if(isset($data['totalValue'])) {
+        if (isset($data['totalValue'])) {
             $this->totalValue($data['totalValue']);
         }
-        if(isset($data['rateValue'])) {
+        if (isset($data['rateValue'])) {
             $this->rateValue($data['rateValue']);
         }
-        if(isset($data['rateValueType'])) {
+        if (isset($data['rateValueType'])) {
             $this->rateValueType($data['rateValueType']);
         }
-        if(isset($data['products'])) {
+        if (isset($data['products'])) {
             $this->products($data['products']);
         }
-        if(isset($data['tags'])) {
+        if (isset($data['tags'])) {
             $this->tags($data['tags']);
         }
-        if(isset($data['transferDate'])) {
+        if (isset($data['transferDate'])) {
             $this->transferDate($data['transferDate']);
         }
-        if(isset($data['status'])) {
+        if (isset($data['status'])) {
             $this->status($data['status']);
         }
     }
@@ -240,11 +240,10 @@ class MoneyTransferIn
      */
     public function products(array $products)
     {
-        foreach($products as $product)
-        {
-            if($product instanceof Product) {
+        foreach ($products as $product) {
+            if ($product instanceof Product) {
                 $this->products[] = $product;
-            }else if (is_array($product)) {
+            } else if (is_array($product)) {
                 $this->products[] = new Product($product);
             }
         }
@@ -306,12 +305,8 @@ class MoneyTransferIn
             'RateValue'            => $this->rateValue,
             'Products'             => !empty($this->products) ? $this->products : [],
             'Tags'                 => $this->tags,
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }
-
-    
-
-
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class Address
 {
@@ -65,34 +65,34 @@ class Address
      */
     public function __construct($data = [])
     {
-        if(isset($data['addressType'])) {
+        if (isset($data['addressType'])) {
             $this->addressType($data['addressType']);
         }
-        if(isset($data['addressLine'])) {
+        if (isset($data['addressLine'])) {
             $this->addressLine($data['addressLine']);
         }
-        if(isset($data['addressLine2'])) {
+        if (isset($data['addressLine2'])) {
             $this->addressLine2($data['addressLine2']);
         }
-        if(isset($data['zipCode'])) {
+        if (isset($data['zipCode'])) {
             $this->zipCode($data['zipCode']);
         }
-        if(isset($data['neighborhood'])) {
+        if (isset($data['neighborhood'])) {
             $this->neighborhood($data['neighborhood']);
         }
-        if(isset($data['cityCode'])) {
+        if (isset($data['cityCode'])) {
             $this->cityCode($data['cityCode']);
         }
-        if(isset($data['cityName'])) {
+        if (isset($data['cityName'])) {
             $this->cityName($data['cityName']);
         }
-        if(isset($data['state'])) {
+        if (isset($data['state'])) {
             $this->state($data['state']);
         }
-        if(isset($data['country'])) {
+        if (isset($data['country'])) {
             $this->country($data['country']);
         }
-        if(isset($data['complement'])) {
+        if (isset($data['complement'])) {
             $this->complement($data['complement']);
         }
     }
@@ -207,16 +207,18 @@ class Address
     public function toArray()
     {
         return array_filter([
-            'AddressType'  => $this->addressType,
-            'AddressLine'  => $this->addressLine,
+            'AddressType' => $this->addressType,
+            'AddressLine' => $this->addressLine,
             'AddressLine2' => $this->addressLine2,
-            'ZipCode'      => $this->zipCode,
+            'ZipCode' => $this->zipCode,
             'Neighborhood' => $this->neighborhood,
-            'CityCode'     => $this->cityCode,
-            'CityName'     => $this->cityName,
-            'State'        => $this->state,
-            'Country'      => $this->country,
-            'Complement'   => $this->complement,
-        ], fn ($v) => !is_null($v));
+            'CityCode' => $this->cityCode,
+            'CityName' => $this->cityName,
+            'State' => $this->state,
+            'Country' => $this->country,
+            'Complement' => $this->complement,
+        ], function ($v) {
+            !is_null($v);
+        });
     }
 }

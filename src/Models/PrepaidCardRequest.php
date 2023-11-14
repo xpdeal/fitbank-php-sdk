@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class PrepaidCardRequest
 {
@@ -41,7 +41,7 @@ class PrepaidCardRequest
      * @var int
      */
     public $usageType;
-    
+
     /**
      * @var int
      */
@@ -109,43 +109,43 @@ class PrepaidCardRequest
      */
     public function __construct($data = [])
     {
-        if(isset($data['usageType'])) {
+        if (isset($data['usageType'])) {
             $this->usageType($data['usageType']);
         }
-        if(isset($data['consumeType'])) {
+        if (isset($data['consumeType'])) {
             $this->consumeType($data['consumeType']);
         }
-        if(isset($data['identifierProduct'])) {
+        if (isset($data['identifierProduct'])) {
             $this->identifierProduct($data['identifierProduct']);
         }
-        if(isset($data['embossingName'])) {
+        if (isset($data['embossingName'])) {
             $this->embossingName($data['embossingName']);
         }
-        if(isset($data['embossingNameType'])) {
+        if (isset($data['embossingNameType'])) {
             $this->embossingNameType($data['embossingNameType']);
         }
-        if(isset($data['cardOwner'])) {
+        if (isset($data['cardOwner'])) {
             $this->cardOwner($data['cardOwner']);
         }
-        if(isset($data['cardHolder'])) {
+        if (isset($data['cardHolder'])) {
             $this->cardHolder($data['cardHolder']);
         }
-        if(isset($data['cardHolderContact'])) {
+        if (isset($data['cardHolderContact'])) {
             $this->cardHolderContact($data['cardHolderContact']);
         }
-        if(isset($data['billingAddress'])) {
+        if (isset($data['billingAddress'])) {
             $this->billingAddress($data['billingAddress']);
         }
-        if(isset($data['cardDeliveryAddress'])) {
+        if (isset($data['cardDeliveryAddress'])) {
             $this->cardDeliveryAddress($data['cardDeliveryAddress']);
         }
-        if(isset($data['rateValue'])) {
+        if (isset($data['rateValue'])) {
             $this->rateValue($data['rateValue']);
         }
-        if(isset($data['rateValueType'])) {
+        if (isset($data['rateValueType'])) {
             $this->rateValueType($data['rateValueType']);
         }
-        if(isset($data['deliveryValue'])) {
+        if (isset($data['deliveryValue'])) {
             $this->deliveryValue($data['deliveryValue']);
         }
     }
@@ -200,9 +200,9 @@ class PrepaidCardRequest
      */
     public function cardOwner($cardOwner)
     {
-        if($cardOwner instanceof CardOwner) {
+        if ($cardOwner instanceof CardOwner) {
             $this->cardOwner = $cardOwner;
-        }else if (is_array($cardOwner)) {
+        } else if (is_array($cardOwner)) {
             $this->cardOwner = new CardOwner($cardOwner);
         }
         return $this;
@@ -213,9 +213,9 @@ class PrepaidCardRequest
      */
     public function cardHolder($cardHolder)
     {
-        if($cardHolder instanceof CardHolder) {
+        if ($cardHolder instanceof CardHolder) {
             $this->cardHolder = $cardHolder;
-        }else if (is_array($cardHolder)) {
+        } else if (is_array($cardHolder)) {
             $this->cardHolder = new CardHolder($cardHolder);
         }
         return $this;
@@ -226,9 +226,9 @@ class PrepaidCardRequest
      */
     public function cardHolderContact($cardHolderContact)
     {
-        if($cardHolderContact instanceof CardHolderContact) {
+        if ($cardHolderContact instanceof CardHolderContact) {
             $this->cardHolderContact = $cardHolderContact;
-        }else if (is_array($cardHolderContact)) {
+        } else if (is_array($cardHolderContact)) {
             $this->cardHolderContact = new CardHolderContact($cardHolderContact);
         }
         return $this;
@@ -239,9 +239,9 @@ class PrepaidCardRequest
      */
     public function billingAddress($billingAddress)
     {
-        if($billingAddress instanceof CardAddress) {
+        if ($billingAddress instanceof CardAddress) {
             $this->billingAddress = $billingAddress;
-        }else if (is_array($billingAddress)) {
+        } else if (is_array($billingAddress)) {
             $this->billingAddress = new CardAddress($billingAddress);
         }
         return $this;
@@ -252,9 +252,9 @@ class PrepaidCardRequest
      */
     public function cardDeliveryAddress($cardDeliveryAddress)
     {
-        if($cardDeliveryAddress instanceof CardAddress) {
+        if ($cardDeliveryAddress instanceof CardAddress) {
             $this->cardDeliveryAddress = $cardDeliveryAddress;
-        }else if (is_array($cardDeliveryAddress)) {
+        } else if (is_array($cardDeliveryAddress)) {
             $this->cardDeliveryAddress = new CardAddress($cardDeliveryAddress);
         }
         return $this;
@@ -307,12 +307,8 @@ class PrepaidCardRequest
             'CardHolderContact'   => $this->cardHolderContact->toArray(),
             'BillingAddress'      => $this->billingAddress->toArray(),
             'CardDeliveryAddress' => $this->cardDeliveryAddress->toArray(),
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }
-
-    
-
-
 }

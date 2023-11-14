@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class CardOwner
 {
@@ -32,16 +32,16 @@ class CardOwner
      */
     public function __construct($data = [])
     {
-        if(isset($data['ownerTaxNumber'])) {
+        if (isset($data['ownerTaxNumber'])) {
             $this->ownerTaxNumber($data['ownerTaxNumber']);
         }
-        if(isset($data['fullName'])) {
+        if (isset($data['fullName'])) {
             $this->fullName($data['fullName']);
         }
-        if(isset($data['phone'])) {
+        if (isset($data['phone'])) {
             $this->phone($data['phone']);
         }
-        if(isset($data['mail'])) {
+        if (isset($data['mail'])) {
             $this->mail($data['mail']);
         }
     }
@@ -94,12 +94,8 @@ class CardOwner
             'FullName'       => $this->fullName,
             'Phone'          => $this->phone,
             'Mail'           => $this->mail,
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }
-
-    
-
-
 }

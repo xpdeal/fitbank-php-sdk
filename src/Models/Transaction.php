@@ -1,9 +1,9 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class Transaction
-{ 
+{
 
     /**
      * @var string
@@ -58,31 +58,31 @@ class Transaction
      */
     public function __construct($data = [])
     {
-        if(isset($data['transactionId'])) {
+        if (isset($data['transactionId'])) {
             $this->transactionId($data['transactionId']);
         }
-        if(isset($data['internalIdentifier'])) {
+        if (isset($data['internalIdentifier'])) {
             $this->internalIdentifier($data['internalIdentifier']);
         }
-        if(isset($data['description'])) {
+        if (isset($data['description'])) {
             $this->description($data['description']);
         }
-        if(isset($data['subType'])) {
+        if (isset($data['subType'])) {
             $this->subType($data['subType']);
         }
-        if(isset($data['entryDate'])) {
+        if (isset($data['entryDate'])) {
             $this->entryDate($data['entryDate']);
         }
-        if(isset($data['entryValue'])) {
+        if (isset($data['entryValue'])) {
             $this->entryValue($data['entryValue']);
         }
-        if(isset($data['usedGuaranteed'])) {
+        if (isset($data['usedGuaranteed'])) {
             $this->usedGuaranteed($data['usedGuaranteed']);
         }
-        if(isset($data['guaranteedValue'])) {
+        if (isset($data['guaranteedValue'])) {
             $this->guaranteedValue($data['guaranteedValue']);
         }
-        if(isset($data['receiptUrl'])) {
+        if (isset($data['receiptUrl'])) {
             $this->receiptUrl($data['receiptUrl']);
         }
     }
@@ -175,7 +175,7 @@ class Transaction
     public static function fromArray(array $data)
     {
         $model = new self();
-        foreach($data as $key => $value) {
+        foreach ($data as $key => $value) {
             $model->{lcfirst($key)}($value);
         }
         return $model;

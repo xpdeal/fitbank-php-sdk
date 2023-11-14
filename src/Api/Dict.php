@@ -1,9 +1,9 @@
 <?php
 
-namespace Hafael\Fitbank\Api;
+namespace Paguesafe\Fitbank\Api;
 
-use Hafael\Fitbank\Models\PixKey;
-use Hafael\Fitbank\Route;
+use Paguesafe\Fitbank\Models\PixKey;
+use Paguesafe\Fitbank\Route;
 
 class Dict extends Api
 {
@@ -18,7 +18,7 @@ class Dict extends Api
     {
         return $this->client->post(new Route(), $this->getBody(array_merge([
             'Method' => $methodName,
-        ], $pixKey->{'to'.$methodName}() )));
+        ], $pixKey->{'to' . $methodName}())));
     }
 
     /**
@@ -130,5 +130,4 @@ class Dict extends Api
     {
         return $this->callApiMethod($pixKey, 'ReplyExternalPixKeyClaim');
     }
-
 }

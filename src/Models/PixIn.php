@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class PixIn
 {
@@ -23,7 +23,7 @@ class PixIn
      * @var string
      */
     public $pixKey;
-    
+
     /**
      * @var string
      */
@@ -43,7 +43,7 @@ class PixIn
      * @var string
      */
     public $bankAccount;
-    
+
     /**
      * @var string
      */
@@ -58,7 +58,7 @@ class PixIn
      * @var boolean
      */
     public $reusable;
-    
+
     /**
      * @var float
      */
@@ -148,7 +148,7 @@ class PixIn
      * @var string
      */
     public $revision;
-    
+
     /**
      * Model constructor.
      * 
@@ -156,78 +156,78 @@ class PixIn
      */
     public function __construct($data = [])
     {
-        if(isset($data['pixKey'])) {
+        if (isset($data['pixKey'])) {
             $this->pixKey($data['pixKey']);
         }
-        if(isset($data['taxNumber'])) {
+        if (isset($data['taxNumber'])) {
             $this->taxNumber($data['taxNumber']);
         }
-        if(isset($data['bank'])) {
+        if (isset($data['bank'])) {
             $this->bank($data['bank']);
         }
-        if(isset($data['bankBranch'])) {
+        if (isset($data['bankBranch'])) {
             $this->bankBranch($data['bankBranch']);
         }
-        if(isset($data['bankAccount'])) {
+        if (isset($data['bankAccount'])) {
             $this->bankAccount($data['bankAccount']);
         }
-        if(isset($data['bankAccountDigit'])) {
+        if (isset($data['bankAccountDigit'])) {
             $this->bankAccountDigit($data['bankAccountDigit']);
         }
-        if(isset($data['status'])) {
+        if (isset($data['status'])) {
             $this->status($data['status']);
         }
-        if(isset($data['payerName'])) {
+        if (isset($data['payerName'])) {
             $this->payerName($data['payerName']);
         }
-        if(isset($data['payerTaxNumber'])) {
+        if (isset($data['payerTaxNumber'])) {
             $this->payerTaxNumber($data['payerTaxNumber']);
         }
-        if(isset($data['changeType'])) {
+        if (isset($data['changeType'])) {
             $this->changeType($data['changeType']);
         }
-        if(isset($data['reusable'])) {
+        if (isset($data['reusable'])) {
             $this->reusable($data['reusable']);
         }
-        if(isset($data['principalValue'])) {
+        if (isset($data['principalValue'])) {
             $this->principalValue($data['principalValue']);
         }
 
-        if(isset($data['interestValue'])) {
+        if (isset($data['interestValue'])) {
             $this->interestValue($data['interestValue']);
         }
-        if(isset($data['interest'])) {
+        if (isset($data['interest'])) {
             $this->interest($data['interest']);
         }
-        if(isset($data['rebateValue'])) {
+        if (isset($data['rebateValue'])) {
             $this->rebateValue($data['rebateValue']);
         }
-        if(isset($data['fineValue'])) {
+        if (isset($data['fineValue'])) {
             $this->fineValue($data['fineValue']);
         }
 
-        if(isset($data['additionalData'])) {
+        if (isset($data['additionalData'])) {
             $this->additionalData($data['additionalData']);
         }
-        if(isset($data['payerRequest'])) {
+        if (isset($data['payerRequest'])) {
             $this->payerRequest($data['payerRequest']);
         }
-        if(isset($data['expirationDate'])) {
+        if (isset($data['expirationDate'])) {
             $this->expirationDate($data['expirationDate']);
         }
-        if(isset($data['transactionPurpose'])) {
+        if (isset($data['transactionPurpose'])) {
             $this->transactionPurpose($data['transactionPurpose']);
         }
-        if(isset($data['transactionValue'])) {
+        if (isset($data['transactionValue'])) {
             $this->transactionValue($data['transactionValue']);
         }
-        if(isset($data['transactionChangeType'])) {
+        if (isset($data['transactionChangeType'])) {
             $this->transactionChangeType($data['transactionChangeType']);
         }
-        if(isset($data['agentModality'])) {
+        if (isset($data['agentModality'])) {
             $this->agentModality($data['agentModality']);
         }
-        if(isset($data['address'])) {
+        if (isset($data['address'])) {
             $this->address($data['address']);
         }
     }
@@ -476,7 +476,7 @@ class PixIn
             //Payer
             'PayerName'             => $this->payerName,
             'PayerTaxNumber'        => $this->payerTaxNumber,
-            
+
             //Params
             'ChangeType'            => $this->changeType,
             'Reusable'              => $this->reusable,
@@ -497,9 +497,8 @@ class PixIn
             //Condition
             'Status'                => $this->status,
             'Revision'              => $this->revision,
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }
-
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Hafael\Fitbank\Api;
+namespace Paguesafe\Fitbank\Api;
 
-use Hafael\Fitbank\Contracts\ClientInterface;
+use Paguesafe\Fitbank\Contracts\ClientInterface;
 
 abstract class Api
 {

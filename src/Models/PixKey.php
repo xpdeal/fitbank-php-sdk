@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class PixKey
 {
@@ -134,7 +134,7 @@ class PixKey
      * @var string
      */
     public $toBankAccountDigit;
-    
+
     /**
      * Model constructor.
      * 
@@ -142,70 +142,70 @@ class PixKey
      */
     public function __construct($data = [])
     {
-        if(isset($data['keyType'])) {
+        if (isset($data['keyType'])) {
             $this->keyType($data['keyType']);
         }
-        if(isset($data['key'])) {
+        if (isset($data['key'])) {
             $this->key($data['key']);
         }
-        if(isset($data['name'])) {
+        if (isset($data['name'])) {
             $this->name($data['name']);
         }
-        if(isset($data['bank'])) {
+        if (isset($data['bank'])) {
             $this->bank($data['bank']);
         }
-        if(isset($data['bankBranch'])) {
+        if (isset($data['bankBranch'])) {
             $this->bankBranch($data['bankBranch']);
         }
-        if(isset($data['bankAccount'])) {
+        if (isset($data['bankAccount'])) {
             $this->bankAccount($data['bankAccount']);
         }
-        if(isset($data['bankAccountDigit'])) {
+        if (isset($data['bankAccountDigit'])) {
             $this->bankAccountDigit($data['bankAccountDigit']);
         }
-        if(isset($data['accountType'])) {
+        if (isset($data['accountType'])) {
             $this->accountType($data['accountType']);
         }
-        if(isset($data['confirmationCode'])) {
+        if (isset($data['confirmationCode'])) {
             $this->confirmationCode($data['confirmationCode']);
         }
-        if(isset($data['confirmation'])) {
+        if (isset($data['confirmation'])) {
             $this->confirmation($data['confirmation']);
         }
-        if(isset($data['taxNumber'])) {
+        if (isset($data['taxNumber'])) {
             $this->taxNumber($data['taxNumber']);
         }
-        if(isset($data['status'])) {
+        if (isset($data['status'])) {
             $this->status($data['status']);
         }
-        if(isset($data['reasonType'])) {
+        if (isset($data['reasonType'])) {
             $this->reasonType($data['reasonType']);
         }
-        if(isset($data['fromBank'])) {
+        if (isset($data['fromBank'])) {
             $this->fromBank($data['fromBank']);
         }
-        if(isset($data['fromBankBranch'])) {
+        if (isset($data['fromBankBranch'])) {
             $this->fromBankBranch($data['fromBankBranch']);
         }
-        if(isset($data['fromBankAccount'])) {
+        if (isset($data['fromBankAccount'])) {
             $this->fromBankAccount($data['fromBankAccount']);
         }
-        if(isset($data['fromBankAccountDigit'])) {
+        if (isset($data['fromBankAccountDigit'])) {
             $this->fromBankAccountDigit($data['fromBankAccountDigit']);
         }
-        if(isset($data['toBusinessUnitId'])) {
+        if (isset($data['toBusinessUnitId'])) {
             $this->toBusinessUnitId($data['toBusinessUnitId']);
         }
-        if(isset($data['toBank'])) {
+        if (isset($data['toBank'])) {
             $this->toBank($data['toBank']);
         }
-        if(isset($data['toBankBranch'])) {
+        if (isset($data['toBankBranch'])) {
             $this->toBankBranch($data['toBankBranch']);
         }
-        if(isset($data['toBankAccount'])) {
+        if (isset($data['toBankAccount'])) {
             $this->toBankAccount($data['toBankAccount']);
         }
-        if(isset($data['toBankAccountDigit'])) {
+        if (isset($data['toBankAccountDigit'])) {
             $this->toBankAccountDigit($data['toBankAccountDigit']);
         }
     }
@@ -436,14 +436,14 @@ class PixKey
             'ToBankBranch'         => $this->toBankBranch,
             'ToBankAccount'        => $this->toBankAccount,
             'ToBankAccountDigit'   => $this->toBankAccountDigit,
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }
 
     public function toCreatePixKey()
     {
-        return array_filter($this->toArray(), function($k) {
+        return array_filter($this->toArray(), function ($k) {
             return in_array($k, [
                 'PixKey',
                 'PixKeyType',
@@ -458,7 +458,7 @@ class PixKey
 
     public function toConfirmPixKeyHold()
     {
-        return array_filter($this->toArray(), function($key) {
+        return array_filter($this->toArray(), function ($key) {
             return in_array($key, [
                 'PixKey',
                 'PixKeyType',
@@ -470,7 +470,7 @@ class PixKey
 
     public function toResendPixKeyToken()
     {
-        return array_filter($this->toArray(), function($key) {
+        return array_filter($this->toArray(), function ($key) {
             return in_array($key, [
                 'PixKey',
                 'PixKeyType',
@@ -481,7 +481,7 @@ class PixKey
 
     public function toGetPixKeyStatus()
     {
-        return array_filter($this->toArray(), function($key) {
+        return array_filter($this->toArray(), function ($key) {
             return in_array($key, [
                 'PixKey',
                 'PixKeyType',
@@ -496,7 +496,7 @@ class PixKey
 
     public function toClaimPixKey()
     {
-        return array_filter($this->toArray(), function($key) {
+        return array_filter($this->toArray(), function ($key) {
             return in_array($key, [
                 'PixKey',
                 'PixKeyType',
@@ -507,7 +507,7 @@ class PixKey
 
     public function toCancelPixKey()
     {
-        return array_filter($this->toArray(), function($key) {
+        return array_filter($this->toArray(), function ($key) {
             return in_array($key, [
                 'PixKey',
                 'PixKeyType',
@@ -523,7 +523,7 @@ class PixKey
 
     public function toChangePixKey()
     {
-        return array_filter($this->toArray(), function($key) {
+        return array_filter($this->toArray(), function ($key) {
             return in_array($key, [
                 'PixKey',
                 'TaxNumber',
@@ -542,7 +542,7 @@ class PixKey
 
     public function toCancelPixKeyClaim()
     {
-        return array_filter($this->toArray(), function($key) {
+        return array_filter($this->toArray(), function ($key) {
             return in_array($key, [
                 'PixKey',
                 'PixKeyType',
@@ -557,7 +557,7 @@ class PixKey
 
     public function toReplyExternalPixKeyClaim()
     {
-        return array_filter($this->toArray(), function($key) {
+        return array_filter($this->toArray(), function ($key) {
             return in_array($key, [
                 'PixKey',
                 'PixKeyType',
@@ -569,7 +569,7 @@ class PixKey
 
     public function toGetInfosPixKey()
     {
-        return array_filter($this->toArray(), function($key) {
+        return array_filter($this->toArray(), function ($key) {
             return in_array($key, [
                 'PixKey',
                 'TaxNumber',

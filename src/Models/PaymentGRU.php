@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class PaymentGRU
 {
@@ -14,7 +14,7 @@ class PaymentGRU
      * @var string
      */
     public $contributorName;
-    
+
     /**
      * @var string
      */
@@ -163,88 +163,88 @@ class PaymentGRU
      */
     public function __construct($data = [])
     {
-        if(isset($data['taxNumber'])) {
+        if (isset($data['taxNumber'])) {
             $this->taxNumber($data['taxNumber']);
         }
-        if(isset($data['contributorName'])) {
+        if (isset($data['contributorName'])) {
             $this->contributorName($data['contributorName']);
         }
-        if(isset($data['contributorTaxNumber'])) {
+        if (isset($data['contributorTaxNumber'])) {
             $this->contributorTaxNumber($data['contributorTaxNumber']);
         }
-        if(isset($data['beneficiaryName'])) {
+        if (isset($data['beneficiaryName'])) {
             $this->beneficiaryName($data['beneficiaryName']);
         }
-        if(isset($data['managerUnit'])) {
+        if (isset($data['managerUnit'])) {
             $this->managerUnit($data['managerUnit']);
         }
-        if(isset($data['barcode'])) {
+        if (isset($data['barcode'])) {
             $this->barcode($data['barcode']);
         }
-        if(isset($data['competence'])) {
+        if (isset($data['competence'])) {
             $this->competence($data['competence']);
         }
-        if(isset($data['codeRevenue'])) {
+        if (isset($data['codeRevenue'])) {
             $this->codeRevenue($data['codeRevenue']);
         }
-        if(isset($data['paymentDate'])) {
+        if (isset($data['paymentDate'])) {
             $this->paymentDate($data['paymentDate']);
         }
-        if(isset($data['principalValue'])) {
+        if (isset($data['principalValue'])) {
             $this->principalValue($data['principalValue']);
         }
-        if(isset($data['discountValue'])) {
+        if (isset($data['discountValue'])) {
             $this->discountValue($data['discountValue']);
         }
-        if(isset($data['otherDeductions'])) {
+        if (isset($data['otherDeductions'])) {
             $this->otherDeductions($data['otherDeductions']);
         }
-        if(isset($data['fineValue'])) {
+        if (isset($data['fineValue'])) {
             $this->fineValue($data['fineValue']);
         }
-        if(isset($data['interestValue'])) {
+        if (isset($data['interestValue'])) {
             $this->interestValue($data['interestValue']);
         }
-        if(isset($data['otherValues'])) {
+        if (isset($data['otherValues'])) {
             $this->otherValues($data['otherValues']);
         }
-        if(isset($data['totalValue'])) {
+        if (isset($data['totalValue'])) {
             $this->totalValue($data['totalValue']);
         }
-        if(isset($data['referenceNumber'])) {
+        if (isset($data['referenceNumber'])) {
             $this->referenceNumber($data['referenceNumber']);
         }
-        if(isset($data['dueDate'])) {
+        if (isset($data['dueDate'])) {
             $this->dueDate($data['dueDate']);
         }
-        if(isset($data['identifier'])) {
+        if (isset($data['identifier'])) {
             $this->identifier($data['identifier']);
         }
-        if(isset($data['description'])) {
+        if (isset($data['description'])) {
             $this->description($data['description']);
         }
-        if(isset($data['rateValue'])) {
+        if (isset($data['rateValue'])) {
             $this->rateValue($data['rateValue']);
         }
-        if(isset($data['rateValueType'])) {
+        if (isset($data['rateValueType'])) {
             $this->rateValueType($data['rateValueType']);
         }
-        if(isset($data['bank'])) {
+        if (isset($data['bank'])) {
             $this->bank($data['bank']);
         }
-        if(isset($data['bankBranch'])) {
+        if (isset($data['bankBranch'])) {
             $this->bankBranch($data['bankBranch']);
         }
-        if(isset($data['bankAccount'])) {
+        if (isset($data['bankAccount'])) {
             $this->bankAccount($data['bankAccount']);
         }
-        if(isset($data['bankAccountDigit'])) {
+        if (isset($data['bankAccountDigit'])) {
             $this->bankAccountDigit($data['bankAccountDigit']);
         }
-        if(isset($data['mailToSend'])) {
+        if (isset($data['mailToSend'])) {
             $this->mailToSend($data['mailToSend']);
         }
-        if(isset($data['phoneToSend'])) {
+        if (isset($data['phoneToSend'])) {
             $this->phoneToSend($data['phoneToSend']);
         }
     }
@@ -374,7 +374,7 @@ class PaymentGRU
         $this->otherDeductions = $otherDeductions;
         return $this;
     }
-    
+
     /**
      * @param float $fineValue
      */
@@ -512,7 +512,7 @@ class PaymentGRU
             'ContributorName'      => $this->contributorName,
             'ContributorTaxNumber' => $this->contributorTaxNumber,
             'BeneficiaryName'      => $this->beneficiaryName,
-            
+
             'FromBank'             => $this->bank,
             'FromBankBranch'       => $this->bankBranch,
             'FromBankAccount'      => $this->bankAccount,
@@ -527,10 +527,10 @@ class PaymentGRU
             'ReferenceNumber'      => $this->referenceNumber,
             'ManagerUnit'          => $this->managerUnit,
             'Competence'           => $this->competence,
-            
+
             'DueDate'              => $this->dueDate,
             'PaymentDate'          => $this->paymentDate,
-            
+
             'PrincipalValue'       => $this->principalValue,
             'DiscountValue'        => $this->discountValue,
             'OtherDeductions'      => $this->otherDeductions,
@@ -538,15 +538,15 @@ class PaymentGRU
             'InterestValue'        => $this->interestValue,
             'OtherValues'          => $this->otherValues,
             'TotalValue'           => $this->totalValue,
-            
+
             'Description'          => $this->description,
             'Identifier'           => $this->identifier,
 
             'RateValue'            => $this->rateValue,
             'RateValueType'        => $this->rateValueType,
 
-            
-        ], function($value) {
+
+        ], function ($value) {
             return !is_null($value);
         });
     }

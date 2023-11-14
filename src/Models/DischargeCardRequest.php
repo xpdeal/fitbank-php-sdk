@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class DischargeCardRequest
 {
@@ -37,19 +37,19 @@ class DischargeCardRequest
      */
     public function __construct($data = [])
     {
-        if(isset($data['taxNumber'])) {
+        if (isset($data['taxNumber'])) {
             $this->taxNumber($data['taxNumber']);
         }
-        if(isset($data['prepaidCardId'])) {
+        if (isset($data['prepaidCardId'])) {
             $this->prepaidCardId($data['prepaidCardId']);
         }
-        if(isset($data['dischargeValue'])) {
+        if (isset($data['dischargeValue'])) {
             $this->dischargeValue($data['dischargeValue']);
         }
-        if(isset($data['identifier'])) {
+        if (isset($data['identifier'])) {
             $this->identifier($data['identifier']);
         }
-        if(isset($data['description'])) {
+        if (isset($data['description'])) {
             $this->description($data['description']);
         }
     }
@@ -111,12 +111,8 @@ class DischargeCardRequest
             'DischargeValue' => $this->dischargeValue,
             'Identifier'     => $this->identifier,
             'Description'    => $this->description,
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }
-
-    
-
-
 }

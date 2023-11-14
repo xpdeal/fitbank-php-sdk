@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class DigitalWithdrawalQrCode
 {
@@ -32,16 +32,16 @@ class DigitalWithdrawalQrCode
      */
     public function __construct($data = [])
     {
-        if(isset($data['taxNumber'])) {
+        if (isset($data['taxNumber'])) {
             $this->taxNumber($data['taxNumber']);
         }
-        if(isset($data['documentNumber'])) {
+        if (isset($data['documentNumber'])) {
             $this->documentNumber($data['documentNumber']);
         }
-        if(isset($data['originNsu'])) {
+        if (isset($data['originNsu'])) {
             $this->originNsu($data['originNsu']);
         }
-        if(isset($data['hashCode'])) {
+        if (isset($data['hashCode'])) {
             $this->hashCode($data['hashCode']);
         }
     }
@@ -93,12 +93,8 @@ class DigitalWithdrawalQrCode
             'DocumentNumber' => $this->documentNumber,
             'OriginNSU'      => $this->originNsu,
             'HashCode'       => $this->hashCode,
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }
-
-    
-
-
 }

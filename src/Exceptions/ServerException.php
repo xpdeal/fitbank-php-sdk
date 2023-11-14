@@ -1,5 +1,7 @@
 <?php
 
-namespace Hafael\Fitbank\Exceptions;
+namespace Paguesafe\Fitbank\Exceptions;
 
-class ServerException extends \Exception {}
+class ServerException extends \Exception
+{
+}

@@ -1,9 +1,9 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class AccountHolder
-{ 
+{
 
     /**
      * @var string
@@ -52,28 +52,28 @@ class AccountHolder
      */
     public function __construct(array $data = [])
     {
-        if(isset($data['identifier'])) {
+        if (isset($data['identifier'])) {
             $this->identifier($data['identifier']);
         }
-        if(isset($data['name'])) {
+        if (isset($data['name'])) {
             $this->name($data['name']);
         }
-        if(isset($data['nickname'])) {
+        if (isset($data['nickname'])) {
             $this->nickname($data['nickname']);
         }
-        if(isset($data['tradingName'])) {
+        if (isset($data['tradingName'])) {
             $this->tradingName($data['tradingName']);
         }
-        if(isset($data['phone'])) {
+        if (isset($data['phone'])) {
             $this->phone($data['phone']);
         }
-        if(isset($data['mail'])) {
+        if (isset($data['mail'])) {
             $this->mail($data['mail']);
         }
-        if(isset($data['taxNumber'])) {
+        if (isset($data['taxNumber'])) {
             $this->taxNumber($data['taxNumber']);
         }
-        if(isset($data['accounts'])) {
+        if (isset($data['accounts'])) {
             $this->accounts($data['accounts']);
         }
     }
@@ -162,11 +162,10 @@ class AccountHolder
      */
     public function accounts(array $accounts = [])
     {
-        foreach($accounts as $account)
-        {
-            if($account instanceof BankAccount) {
+        foreach ($accounts as $account) {
+            if ($account instanceof BankAccount) {
                 $this->accounts[] = $account;
-            }else if (is_array($account)) {
+            } else if (is_array($account)) {
                 $this->accounts[] = BankAccount::fromArray($account);
             }
         }
@@ -179,7 +178,7 @@ class AccountHolder
     public static function fromArray(array $data)
     {
         $model = new self();
-        foreach($data as $key => $value) {
+        foreach ($data as $key => $value) {
             $model->{lcfirst($key)}($value);
         }
         return $model;
@@ -191,7 +190,9 @@ class AccountHolder
      */
     public function toArray()
     {
-        $accounts = array_map(function($account){return $account->toArray();}, $this->accounts);
+        $accounts = array_map(function ($account) {
+            return $account->toArray();
+        }, $this->accounts);
 
         return array_filter([
             'Identifier'  => $this->identifier,

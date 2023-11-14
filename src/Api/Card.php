@@ -1,13 +1,13 @@
 <?php
 
-namespace Hafael\Fitbank\Api;
+namespace Paguesafe\Fitbank\Api;
 
-use Hafael\Fitbank\Models\ChangePinCardRequest;
-use Hafael\Fitbank\Models\DischargeCardRequest;
-use Hafael\Fitbank\Models\PrepaidCardRequest;
-use Hafael\Fitbank\Models\RechargeCardRequest;
-use Hafael\Fitbank\Models\UnnamedPrepaidCardRequest;
-use Hafael\Fitbank\Route;
+use Paguesafe\Fitbank\Models\ChangePinCardRequest;
+use Paguesafe\Fitbank\Models\DischargeCardRequest;
+use Paguesafe\Fitbank\Models\PrepaidCardRequest;
+use Paguesafe\Fitbank\Models\RechargeCardRequest;
+use Paguesafe\Fitbank\Models\UnnamedPrepaidCardRequest;
+use Paguesafe\Fitbank\Route;
 
 class Card extends Api
 {
@@ -363,6 +363,4 @@ class Card extends Api
             'Method' => 'GetCardHolders',
         ]));
     }
-    
-
 }

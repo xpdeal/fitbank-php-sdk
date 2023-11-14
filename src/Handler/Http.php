@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Handler;
+namespace Paguesafe\Fitbank\Handler;
 
 final class Http
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace Hafael\Fitbank\Api;
+namespace Paguesafe\Fitbank\Api;
 
-use Hafael\Fitbank\Models\Account;
-use Hafael\Fitbank\Models\PixCollect;
-use Hafael\Fitbank\Models\PixOut;
-use Hafael\Fitbank\Models\PixPayment;
-use Hafael\Fitbank\Models\PixRefund;
-use Hafael\Fitbank\Route;
+use Paguesafe\Fitbank\Models\Account;
+use Paguesafe\Fitbank\Models\PixCollect;
+use Paguesafe\Fitbank\Models\PixOut;
+use Paguesafe\Fitbank\Models\PixPayment;
+use Paguesafe\Fitbank\Models\PixRefund;
+use Paguesafe\Fitbank\Route;
 
 class Pix extends Api
 {
@@ -22,7 +22,7 @@ class Pix extends Api
     {
         return $this->client->post(new Route(), $this->getBody(array_merge([
             'Method' => 'GeneratePixOut',
-        ], $pixOut->toArray() )));
+        ], $pixOut->toArray())));
     }
 
     /**
@@ -35,7 +35,7 @@ class Pix extends Api
     {
         return $this->client->post(new Route(), $this->getBody(array_merge([
             'Method' => 'GenerateStaticPixQRCode',
-        ], $pixCollect->toArray() )));
+        ], $pixCollect->toArray())));
     }
 
     /**
@@ -48,7 +48,7 @@ class Pix extends Api
     {
         return $this->client->post(new Route(), $this->getBody(array_merge([
             'Method' => 'GenerateDynamicPixQRCode',
-        ], $pixCollect->toArray() )));
+        ], $pixCollect->toArray())));
     }
 
     /**
@@ -63,7 +63,7 @@ class Pix extends Api
         return $this->client->post(new Route(), $this->getBody(array_merge([
             'Method'         => 'ChangeDynamicPixQRCode',
             'DocumentNumber' => $documentNumber,
-        ], $pixCollect->toArray() )));
+        ], $pixCollect->toArray())));
     }
 
     /**
@@ -76,7 +76,7 @@ class Pix extends Api
     {
         return $this->client->post(new Route(), $this->getBody(array_merge([
             'Method' => 'GenerateDynamicPixQRCodeDueDate',
-        ], $pixCollect->toArray() )));
+        ], $pixCollect->toArray())));
     }
 
     /**
@@ -91,7 +91,7 @@ class Pix extends Api
         return $this->client->post(new Route(), $this->getBody(array_merge([
             'Method'         => 'ChangeDynamicPixQRCodeDueDate',
             'DocumentNumber' => $documentNumber,
-        ], $pixCollect->toArray() )));
+        ], $pixCollect->toArray())));
     }
 
     /**
@@ -120,7 +120,7 @@ class Pix extends Api
         return $this->client->post(new Route(), $this->getBody(array_merge([
             'Method'         => 'GetPixOutById',
             'DocumentNumber' => $documentNumber,
-        ], $pixOut->toGetPixOutArray() )));
+        ], $pixOut->toGetPixOutArray())));
     }
 
     /**
@@ -141,7 +141,7 @@ class Pix extends Api
             'EndDate'   => $endDate,
             'PageSize'  => $pageSize,
             'Index'     => $pageIndex,
-        ], $account->toArray() )));
+        ], $account->toArray())));
     }
 
     /**
@@ -162,7 +162,7 @@ class Pix extends Api
             'EndDate'   => $endDate,
             'PageSize'  => $pageSize,
             'Index'     => $pageIndex,
-        ], $account->toArray() )));
+        ], $account->toArray())));
     }
 
     /**
@@ -177,7 +177,7 @@ class Pix extends Api
         return $this->client->post(new Route(), $this->getBody(array_merge([
             'Method'         => 'GetPixInById',
             'DocumentNumber' => $documentNumber,
-        ], $pixOut->toGetPixOutArray() )));
+        ], $pixOut->toGetPixOutArray())));
     }
 
     /**
@@ -191,7 +191,7 @@ class Pix extends Api
         return $this->client->post(new Route(), $this->getBody(array_merge([
             'Method'         => 'CancelPixOut',
             'DocumentNumber' => $documentNumber
-        ], $account->toArray() )));
+        ], $account->toArray())));
     }
 
     /**
@@ -250,7 +250,7 @@ class Pix extends Api
         return $this->client->post(new Route(), $this->getBody(array_merge([
             'Method'         => 'GetRefundPixInById',
             'DocumentNumber' => $documentNumber,
-        ], $account->toArray() )));
+        ], $account->toArray())));
     }
 
     /**
@@ -296,8 +296,4 @@ class Pix extends Api
             'Index'     => $pageIndex,
         ]));
     }
-
-    
-
-
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class PixOut
 {
@@ -45,7 +45,7 @@ class PixOut
      * @var string
      */
     public $bankAccount;
-    
+
     /**
      * @var string
      */
@@ -65,7 +65,7 @@ class PixOut
      * @var string
      */
     public $paymentDate;
-    
+
     /**
      * @var float
      */
@@ -100,7 +100,7 @@ class PixOut
      * @var string
      */
     public $customerMessage;
-    
+
     /**
      * Model constructor.
      * 
@@ -108,46 +108,46 @@ class PixOut
      */
     public function __construct($data = [])
     {
-        if(isset($data['taxNumber'])) {
+        if (isset($data['taxNumber'])) {
             $this->taxNumber($data['taxNumber']);
         }
-        if(isset($data['bank'])) {
+        if (isset($data['bank'])) {
             $this->bank($data['bank']);
         }
-        if(isset($data['bankBranch'])) {
+        if (isset($data['bankBranch'])) {
             $this->bankBranch($data['bankBranch']);
         }
-        if(isset($data['bankAccount'])) {
+        if (isset($data['bankAccount'])) {
             $this->bankAccount($data['bankAccount']);
         }
-        if(isset($data['bankAccountDigit'])) {
+        if (isset($data['bankAccountDigit'])) {
             $this->bankAccountDigit($data['bankAccountDigit']);
         }
-        if(isset($data['toKey'])) {
+        if (isset($data['toKey'])) {
             $this->toKey($data['toKey']);
         }
-        if(isset($data['paymentDate'])) {
+        if (isset($data['paymentDate'])) {
             $this->paymentDate($data['paymentDate']);
         }
-        if(isset($data['value'])) {
+        if (isset($data['value'])) {
             $this->value($data['value']);
         }
-        if(isset($data['rateValue'])) {
+        if (isset($data['rateValue'])) {
             $this->rateValue($data['rateValue']);
         }
-        if(isset($data['rateValueType'])) {
+        if (isset($data['rateValueType'])) {
             $this->rateValueType($data['rateValueType']);
         }
-        if(isset($data['identifier'])) {
+        if (isset($data['identifier'])) {
             $this->identifier($data['identifier']);
         }
-        if(isset($data['description'])) {
+        if (isset($data['description'])) {
             $this->description($data['description']);
         }
-        if(isset($data['searchProtocol'])) {
+        if (isset($data['searchProtocol'])) {
             $this->searchProtocol($data['searchProtocol']);
         }
-        if(isset($data['customerMessage'])) {
+        if (isset($data['customerMessage'])) {
             $this->customerMessage($data['customerMessage']);
         }
     }
@@ -279,7 +279,7 @@ class PixOut
         return $this;
     }
 
-   
+
     /**
      * All payment read attributes
      * 
@@ -293,10 +293,10 @@ class PixOut
             'BankBranch'            => $this->bankBranch,
             'BankAccount'           => $this->bankAccount,
             'BankAccountDigit'      => $this->bankAccountDigit,
-            
+
             'TaxNumber'             => $this->taxNumber,
             'InitiationType'        => 0,
-            
+
             //To
             'PixKey'                => $this->toKey->key,
             'PixKeyType'            => $this->toKey->keyType,
@@ -317,8 +317,8 @@ class PixOut
             'Description'           => $this->description,
             'SearchProtocol'        => $this->searchProtocol,
             'CustomerMessage'       => $this->customerMessage,
-            
-        ], function($value) {
+
+        ], function ($value) {
             return !is_null($value);
         });
     }
@@ -336,7 +336,7 @@ class PixOut
             'BankAccount'           => $this->bankAccount,
             'BankAccountDigit'      => $this->bankAccountDigit,
             'TaxNumber'             => $this->taxNumber,
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }

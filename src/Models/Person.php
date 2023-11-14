@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class Person
 {
@@ -22,12 +22,12 @@ class Person
     const MARITAL_WIDOWER     = 4;
     const MARITAL_SINGLE      = 5;
     const MARITAL_OTHER       = 6;
-    
+
     /**
      * @var string
      */
     public $personRoleType = self::ROLE_TYPE_HOLDER;
-    
+
     /**
      * @var string
      */
@@ -162,86 +162,86 @@ class Person
      */
     public function __construct($data = [])
     {
-        if(isset($data['personRoleType'])) {
+        if (isset($data['personRoleType'])) {
             $this->personRoleType($data['personRoleType']);
         }
-        if(isset($data['taxNumber'])) {
+        if (isset($data['taxNumber'])) {
             $this->taxNumber($data['taxNumber']);
         }
-        if(isset($data['identifier'])) {
+        if (isset($data['identifier'])) {
             $this->identifier($data['identifier']);
         }
-        if(isset($data['mail'])) {
+        if (isset($data['mail'])) {
             $this->mail($data['mail']);
         }
-        if(isset($data['name'])) {
+        if (isset($data['name'])) {
             $this->name($data['name']);
             $this->personName($data['name']);
         }
-        if(isset($data['personName'])) {
+        if (isset($data['personName'])) {
             $this->personName($data['personName']);
             $this->name($data['personName']);
         }
-        if(isset($data['phoneNumber'])) {
+        if (isset($data['phoneNumber'])) {
             $this->phoneNumber($data['phoneNumber']);
             $this->phone($data['phoneNumber']);
         }
-        if(isset($data['phone'])) {
+        if (isset($data['phone'])) {
             $this->phone($data['phone']);
             $this->phoneNumber($data['phone']);
         }
-        if(isset($data['nickname'])) {
+        if (isset($data['nickname'])) {
             $this->nickname($data['nickname']);
         }
-        if(isset($data['checkPendingTransfers'])) {
+        if (isset($data['checkPendingTransfers'])) {
             $this->checkPendingTransfers($data['checkPendingTransfers']);
         }
-        if(isset($data['publiclyExposedPerson'])) {
+        if (isset($data['publiclyExposedPerson'])) {
             $this->publiclyExposedPerson($data['publiclyExposedPerson']);
         }
-        if(isset($data['birthDate'])) {
+        if (isset($data['birthDate'])) {
             $this->birthDate($data['birthDate']);
         }
-        if(isset($data['motherFullName'])) {
+        if (isset($data['motherFullName'])) {
             $this->motherFullName($data['motherFullName']);
         }
-        if(isset($data['fatherFullName'])) {
+        if (isset($data['fatherFullName'])) {
             $this->fatherFullName($data['fatherFullName']);
         }
-        if(isset($data['nationality'])) {
+        if (isset($data['nationality'])) {
             $this->nationality($data['nationality']);
         }
-        if(isset($data['birthCity'])) {
+        if (isset($data['birthCity'])) {
             $this->birthCity($data['birthCity']);
         }
-        if(isset($data['birthState'])) {
+        if (isset($data['birthState'])) {
             $this->birthState($data['birthState']);
         }
-        if(isset($data['gender'])) {
+        if (isset($data['gender'])) {
             $this->gender($data['gender']);
         }
-        if(isset($data['maritalStatus'])) {
+        if (isset($data['maritalStatus'])) {
             $this->maritalStatus($data['maritalStatus']);
         }
-        if(isset($data['spouseName'])) {
+        if (isset($data['spouseName'])) {
             $this->spouseName($data['spouseName']);
         }
-        if(isset($data['occupation'])) {
+        if (isset($data['occupation'])) {
             $this->occupation($data['occupation']);
         }
-        if(isset($data['literacy'])) {
+        if (isset($data['literacy'])) {
             $this->literacy($data['literacy']);
         }
-        if(isset($data['identityDocument'])) {
+        if (isset($data['identityDocument'])) {
             $this->identityDocument($data['identityDocument']);
         }
-        if(isset($data['monthlyIncome'])) {
+        if (isset($data['monthlyIncome'])) {
             $this->monthlyIncome($data['monthlyIncome']);
         }
-        if(isset($data['address'])) {
+        if (isset($data['address'])) {
             $this->address($data['address']);
         }
-        if(isset($data['documents'])) {
+        if (isset($data['documents'])) {
             $this->documents($data['documents']);
         }
     }
@@ -344,7 +344,7 @@ class Person
         $this->nickname = $nickname;
         return $this;
     }
-    
+
     /**
      * @param string $birthDate
      */
@@ -467,9 +467,9 @@ class Person
      */
     public function address($address)
     {
-        if($address instanceof Address) {
+        if ($address instanceof Address) {
             $this->address = $address;
-        }else if (is_array($address)) {
+        } else if (is_array($address)) {
             $this->address = new Address($address);
         }
         return $this;
@@ -480,11 +480,10 @@ class Person
      */
     public function documents(array $documents)
     {
-        foreach($documents as $document)
-        {
-            if($document instanceof Document) {
+        foreach ($documents as $document) {
+            if ($document instanceof Document) {
                 $this->documents[] = $document;
-            }else if (is_array($document)) {
+            } else if (is_array($document)) {
                 $this->documents[] = new Document($document);
             }
         }
@@ -521,8 +520,10 @@ class Person
             'Occupation'            => $this->occupation,
             'IdentityDocument'      => $this->identityDocument,
             'MonthlyIncome'         => $this->monthlyIncome,
-            'PersonDocuments'       => array_map(function($document){return $document->toArray();}, $this->documents),
-        ], function($v) {
+            'PersonDocuments'       => array_map(function ($document) {
+                return $document->toArray();
+            }, $this->documents),
+        ], function ($v) {
             return !is_null($v);
         });
     }

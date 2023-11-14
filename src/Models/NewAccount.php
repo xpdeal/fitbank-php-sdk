@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class NewAccount
 {
@@ -81,7 +81,7 @@ class NewAccount
      * @var mixed
      */
     public $company;
-    
+
     /**
      * Model constructor.
      * 
@@ -89,45 +89,45 @@ class NewAccount
      */
     public function __construct($data = [])
     {
-        if(isset($data['profileType'])) {
+        if (isset($data['profileType'])) {
             $this->profileType($data['profileType']);
         }
-        if(isset($data['status'])) {
+        if (isset($data['status'])) {
             $this->status($data['status']);
         }
-        if(isset($data['condition'])) {
+        if (isset($data['condition'])) {
             $this->condition($data['condition']);
         }
-        if(isset($data['accountId'])) {
+        if (isset($data['accountId'])) {
             $this->accountId($data['accountId']);
         }
-        if(isset($data['accountKey'])) {
+        if (isset($data['accountKey'])) {
             $this->accountKey($data['accountKey']);
         }
-        if(isset($data['enableSpb'])) {
+        if (isset($data['enableSpb'])) {
             $this->enableSpb($data['enableSpb']);
         }
-        if(isset($data['bank'])) {
+        if (isset($data['bank'])) {
             $this->bank($data['bank']);
         }
-        if(isset($data['bankBranch'])) {
+        if (isset($data['bankBranch'])) {
             $this->bankBranch($data['bankBranch']);
         }
-        if(isset($data['bankAccount'])) {
+        if (isset($data['bankAccount'])) {
             $this->bankAccount($data['bankAccount']);
         }
-        if(isset($data['bankAccountDigit'])) {
+        if (isset($data['bankAccountDigit'])) {
             $this->bankAccountDigit($data['bankAccountDigit']);
         }
 
-        if(isset($data['holder'])) {
+        if (isset($data['holder'])) {
             $this->holder($data['holder']);
         }
-        
-        if(isset($data['persons'])) {
+
+        if (isset($data['persons'])) {
             $this->persons($data['persons']);
         }
-        if(isset($data['company'])) {
+        if (isset($data['company'])) {
             $this->company($data['company']);
         }
     }
@@ -227,7 +227,7 @@ class NewAccount
      */
     public function company($company)
     {
-        if($company instanceof Company) {
+        if ($company instanceof Company) {
             $this->company = $company;
         } else {
             $this->company = new Company($company);
@@ -240,7 +240,7 @@ class NewAccount
      */
     public function holder($holder)
     {
-        if($holder instanceof Person) {
+        if ($holder instanceof Person) {
             $this->holder = $holder;
         } else {
             $this->holder = new Person($holder);
@@ -253,11 +253,10 @@ class NewAccount
      */
     public function persons(array $persons)
     {
-        foreach($persons as $document)
-        {
-            if($document instanceof Person) {
+        foreach ($persons as $document) {
+            if ($document instanceof Person) {
                 $this->persons[] = $document;
-            }else if (is_array($document)) {
+            } else if (is_array($document)) {
                 $this->persons[] = new Person($document);
             }
         }
@@ -270,7 +269,7 @@ class NewAccount
      */
     public function toArray()
     {
-        
+
         $baseFields = [
             'IsCompany'             => $this->profileType,
             'EnableSpb'             => $this->enableSpb,
@@ -280,31 +279,33 @@ class NewAccount
             'BankAccountDigit'      => $this->bankAccountDigit,
         ];
 
-        if($this->profileType === self::PROFILE_TYPE_PERSON) 
-        {
-            
-            $documents = array_map(function($document){return $document->toArray();}, $this->holder->documents);
-            $persons = array_map(function($person){return $person->toArray();}, $this->persons);
-            
+        if ($this->profileType === self::PROFILE_TYPE_PERSON) {
+
+            $documents = array_map(function ($document) {
+                return $document->toArray();
+            }, $this->holder->documents);
+            $persons = array_map(function ($person) {
+                return $person->toArray();
+            }, $this->persons);
+
             $holderFields = array_merge($this->holder->toArray(), [
                 'Addresses' => [$this->holder->address->toArray()],
                 'Documents' => $documents,
                 'Persons' => $persons,
             ]);
-
-        }else 
-        {
+        } else {
             $persons = [];
             $addresses = [$this->company->address->toArray()];
-            $documents = array_map(function($document){return $document->toArray();}, $this->company->documents);
-            
-            foreach($this->persons as $person) {
+            $documents = array_map(function ($document) {
+                return $document->toArray();
+            }, $this->company->documents);
+
+            foreach ($this->persons as $person) {
 
                 $persons[] = $person->toArray();
-                if($person->personRoleType === Person::ROLE_TYPE_HOLDER) {
+                if ($person->personRoleType === Person::ROLE_TYPE_HOLDER) {
                     $addresses[] = $person->address->toArray();
                 }
-                
             }
 
             $holderFields = array_merge($this->company->toArray(), [
@@ -313,13 +314,12 @@ class NewAccount
                 'Persons' => $persons,
             ]);
         }
-        
+
         return array_filter(
             array_merge(
                 $baseFields,
                 $holderFields
             )
         );
-       
     }
 }

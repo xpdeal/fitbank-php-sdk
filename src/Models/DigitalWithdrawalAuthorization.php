@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class DigitalWithdrawalAuthorization
 {
@@ -32,16 +32,16 @@ class DigitalWithdrawalAuthorization
      */
     public function __construct($data = [])
     {
-        if(isset($data['taxNumber'])) {
+        if (isset($data['taxNumber'])) {
             $this->taxNumber($data['taxNumber']);
         }
-        if(isset($data['documentNumber'])) {
+        if (isset($data['documentNumber'])) {
             $this->documentNumber($data['documentNumber']);
         }
-        if(isset($data['originNsu'])) {
+        if (isset($data['originNsu'])) {
             $this->originNsu($data['originNsu']);
         }
-        if(isset($data['externalIdentifier'])) {
+        if (isset($data['externalIdentifier'])) {
             $this->externalIdentifier($data['externalIdentifier']);
         }
     }
@@ -93,12 +93,8 @@ class DigitalWithdrawalAuthorization
             'DocumentNumber'     => $this->documentNumber,
             'OriginNSU'          => $this->originNsu,
             'ExternalIdentifier' => $this->externalIdentifier,
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }
-
-    
-
-
 }

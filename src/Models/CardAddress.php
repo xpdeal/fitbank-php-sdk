@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class CardAddress
 {
@@ -64,34 +64,34 @@ class CardAddress
      */
     public function __construct($data = [])
     {
-        if(isset($data['type'])) {
+        if (isset($data['type'])) {
             $this->type($data['type']);
         }
-        if(isset($data['line'])) {
+        if (isset($data['line'])) {
             $this->line($data['line']);
         }
-        if(isset($data['number'])) {
+        if (isset($data['number'])) {
             $this->number($data['number']);
         }
-        if(isset($data['zipCode'])) {
+        if (isset($data['zipCode'])) {
             $this->zipCode($data['zipCode']);
         }
-        if(isset($data['neighborhood'])) {
+        if (isset($data['neighborhood'])) {
             $this->neighborhood($data['neighborhood']);
         }
-        if(isset($data['city'])) {
+        if (isset($data['city'])) {
             $this->city($data['city']);
         }
-        if(isset($data['state'])) {
+        if (isset($data['state'])) {
             $this->state($data['state']);
         }
-        if(isset($data['country'])) {
+        if (isset($data['country'])) {
             $this->country($data['country']);
         }
-        if(isset($data['complement'])) {
+        if (isset($data['complement'])) {
             $this->complement($data['complement']);
         }
-        if(isset($data['reference'])) {
+        if (isset($data['reference'])) {
             $this->reference($data['reference']);
         }
     }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Hafael\Fitbank\Utils;
+namespace Paguesafe\Fitbank\Utils;
 
-use Hafael\Fitbank\Models\Document;
+use Paguesafe\Fitbank\Models\Document;
 
 class Image
 {
@@ -107,10 +107,10 @@ class Image
             self::MIME_TXT  => 4,
         ];
 
-        if($this->extension() === 'jpg') {
+        if ($this->extension() === 'jpg') {
             return $formats[self::MIME_JPG];
         }
-        
+
         return $formats[$this->mimeType()];
     }
 
@@ -129,5 +129,4 @@ class Image
     {
         return 'data:' . $this->mimeType() . ';base64,' . $this->toBase64();
     }
-
 }

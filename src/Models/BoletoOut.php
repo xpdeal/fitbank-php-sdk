@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class BoletoOut
 {
@@ -14,7 +14,7 @@ class BoletoOut
      * @var string
      */
     public $taxNumber;
-    
+
     /**
      * @var string
      */
@@ -44,7 +44,7 @@ class BoletoOut
      * @var string
      */
     public $payerTaxNumber;
-    
+
     /**
      * @var string
      */
@@ -188,107 +188,107 @@ class BoletoOut
      */
     public function __construct($data = [])
     {
-        if(isset($data['name'])) {
+        if (isset($data['name'])) {
             $this->name($data['name']);
         }
-        if(isset($data['taxNumber'])) {
+        if (isset($data['taxNumber'])) {
             $this->taxNumber($data['taxNumber']);
         }
-        if(isset($data['beneficiaryName'])) {
+        if (isset($data['beneficiaryName'])) {
             $this->beneficiaryName($data['beneficiaryName']);
         }
-        if(isset($data['beneficiaryTaxNumber'])) {
+        if (isset($data['beneficiaryTaxNumber'])) {
             $this->beneficiaryTaxNumber($data['beneficiaryTaxNumber']);
         }
-        if(isset($data['guarantorName'])) {
+        if (isset($data['guarantorName'])) {
             $this->guarantorName($data['guarantorName']);
         }
-        if(isset($data['guarantorTaxNumber'])) {
+        if (isset($data['guarantorTaxNumber'])) {
             $this->guarantorTaxNumber($data['guarantorTaxNumber']);
         }
-        if(isset($data['payerName'])) {
+        if (isset($data['payerName'])) {
             $this->payerName($data['payerName']);
         }
-        if(isset($data['payerTaxNumber'])) {
+        if (isset($data['payerTaxNumber'])) {
             $this->payerTaxNumber($data['payerTaxNumber']);
         }
-        if(isset($data['barcode'])) {
+        if (isset($data['barcode'])) {
             $this->barcode($data['barcode']);
         }
-        if(isset($data['paymentDate'])) {
+        if (isset($data['paymentDate'])) {
             $this->paymentDate($data['paymentDate']);
         }
-        if(isset($data['dueDate'])) {
+        if (isset($data['dueDate'])) {
             $this->dueDate($data['dueDate']);
         }
-        if(isset($data['principalValue'])) {
+        if (isset($data['principalValue'])) {
             $this->principalValue($data['principalValue']);
         }
-        if(isset($data['discountValue'])) {
+        if (isset($data['discountValue'])) {
             $this->discountValue($data['discountValue']);
         }
-        if(isset($data['extraValue'])) {
+        if (isset($data['extraValue'])) {
             $this->extraValue($data['extraValue']);
         }
-        if(isset($data['identifier'])) {
+        if (isset($data['identifier'])) {
             $this->identifier($data['identifier']);
         }
-        if(isset($data['description'])) {
+        if (isset($data['description'])) {
             $this->description($data['description']);
         }
-        if(isset($data['rateValue'])) {
+        if (isset($data['rateValue'])) {
             $this->rateValue($data['rateValue']);
         }
-        if(isset($data['rateValueType'])) {
+        if (isset($data['rateValueType'])) {
             $this->rateValueType($data['rateValueType']);
         }
-        if(isset($data['paymentSubType'])) {
+        if (isset($data['paymentSubType'])) {
             $this->paymentSubType($data['paymentSubType']);
         }
-        if(isset($data['bank'])) {
+        if (isset($data['bank'])) {
             $this->bank($data['bank']);
         }
-        if(isset($data['bankBranch'])) {
+        if (isset($data['bankBranch'])) {
             $this->bankBranch($data['bankBranch']);
         }
-        if(isset($data['bankAccount'])) {
+        if (isset($data['bankAccount'])) {
             $this->bankAccount($data['bankAccount']);
         }
-        if(isset($data['bankAccountDigit'])) {
+        if (isset($data['bankAccountDigit'])) {
             $this->bankAccountDigit($data['bankAccountDigit']);
         }
-        if(isset($data['mailToSend'])) {
+        if (isset($data['mailToSend'])) {
             $this->mailToSend($data['mailToSend']);
         }
-        if(isset($data['phoneToSend'])) {
+        if (isset($data['phoneToSend'])) {
             $this->phoneToSend($data['phoneToSend']);
         }
 
-        if(isset($data['feePayerFullName'])) {
+        if (isset($data['feePayerFullName'])) {
             $this->feePayerFullName($data['feePayerFullName']);
         }
-        if(isset($data['feePayerMail'])) {
+        if (isset($data['feePayerMail'])) {
             $this->feePayerMail($data['feePayerMail']);
         }
-        if(isset($data['feePayerBank'])) {
+        if (isset($data['feePayerBank'])) {
             $this->feePayerBank($data['feePayerBank']);
         }
-        if(isset($data['feePayerBankBranch'])) {
+        if (isset($data['feePayerBankBranch'])) {
             $this->feePayerBankBranch($data['feePayerBankBranch']);
         }
-        if(isset($data['feePayerBankAccount'])) {
+        if (isset($data['feePayerBankAccount'])) {
             $this->feePayerBankAccount($data['feePayerBankAccount']);
         }
-        if(isset($data['feePayerBankAccountDigit'])) {
+        if (isset($data['feePayerBankAccountDigit'])) {
             $this->feePayerBankAccountDigit($data['feePayerBankAccountDigit']);
         }
-        if(isset($data['feePayerTradingName'])) {
+        if (isset($data['feePayerTradingName'])) {
             $this->feePayerTradingName($data['feePayerTradingName']);
         }
-        if(isset($data['feePayerLegalName'])) {
+        if (isset($data['feePayerLegalName'])) {
             $this->feePayerLegalName($data['feePayerLegalName']);
         }
-        if(isset($data['feePayerIdentityDocument'])) {
+        if (isset($data['feePayerIdentityDocument'])) {
             $this->feePayerIdentityDocument($data['feePayerIdentityDocument']);
         }
     }
@@ -598,7 +598,7 @@ class BoletoOut
         $this->feePayerLegalName = $feePayerLegalName;
         return $this;
     }
-    
+
     /**
      * @param string $feePayerIdentityDocument
      */
@@ -658,8 +658,8 @@ class BoletoOut
             'FeePayerLegalName'        => $this->feePayerLegalName,
             'FeePayerIdentityDocument' => $this->feePayerIdentityDocument,
 
-            
-        ], function($value) {
+
+        ], function ($value) {
             return !is_null($value);
         });
     }

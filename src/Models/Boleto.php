@@ -1,10 +1,10 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class Boleto
 {
-    
+
     const TYPE_CHARGE             = 0;
     const TYPE_CASHIN             = 1;
     const CHARGE_RECURRING        = true;
@@ -29,7 +29,7 @@ class Boleto
      * @var int
      */
     public $mktPlaceId;
-    
+
     /**
      * @var int
      */
@@ -149,7 +149,7 @@ class Boleto
      * @var int
      */
     public $registration;
-    
+
     /**
      * @var string
      */
@@ -179,7 +179,7 @@ class Boleto
      * @var float
      */
     public $rateValue = 0;
-    
+
     /**
      * @var int
      */
@@ -237,127 +237,127 @@ class Boleto
      */
     public function __construct($data = [])
     {
-        if(isset($data['mktPlaceId'])) {
+        if (isset($data['mktPlaceId'])) {
             $this->mktPlaceId($data['mktPlaceId']);
         }
-        if(isset($data['groupTemplate'])) {
+        if (isset($data['groupTemplate'])) {
             $this->groupTemplate($data['groupTemplate']);
         }
-        if(isset($data['customerName'])) {
+        if (isset($data['customerName'])) {
             $this->customerName($data['customerName']);
         }
-        if(isset($data['customerTaxNumber'])) {
+        if (isset($data['customerTaxNumber'])) {
             $this->customerTaxNumber($data['customerTaxNumber']);
         }
-        if(isset($data['customerMail'])) {
+        if (isset($data['customerMail'])) {
             $this->customerMail($data['customerMail']);
         }
-        if(isset($data['customerPhone'])) {
+        if (isset($data['customerPhone'])) {
             $this->customerPhone($data['customerPhone']);
         }
-        if(isset($data['supplierTaxNumber'])) {
+        if (isset($data['supplierTaxNumber'])) {
             $this->supplierTaxNumber($data['supplierTaxNumber']);
         }
-        if(isset($data['supplierFullName'])) {
+        if (isset($data['supplierFullName'])) {
             $this->supplierFullName($data['supplierFullName']);
         }
-        if(isset($data['supplierTradingName'])) {
+        if (isset($data['supplierTradingName'])) {
             $this->supplierTradingName($data['supplierTradingName']);
         }
-        if(isset($data['supplierLegalName'])) {
+        if (isset($data['supplierLegalName'])) {
             $this->supplierLegalName($data['supplierLegalName']);
         }
-        if(isset($data['supplierIdentityDocument'])) {
+        if (isset($data['supplierIdentityDocument'])) {
             $this->supplierIdentityDocument($data['supplierIdentityDocument']);
         }
-        if(isset($data['supplierMail'])) {
+        if (isset($data['supplierMail'])) {
             $this->supplierMail($data['supplierMail']);
         }
-        if(isset($data['supplierPhone'])) {
+        if (isset($data['supplierPhone'])) {
             $this->supplierPhone($data['supplierPhone']);
         }
-        if(isset($data['addressLine1'])) {
+        if (isset($data['addressLine1'])) {
             $this->addressLine1($data['addressLine1']);
         }
-        if(isset($data['addressLine2'])) {
+        if (isset($data['addressLine2'])) {
             $this->addressLine1($data['addressLine2']);
         }
-        if(isset($data['neighborhood'])) {
+        if (isset($data['neighborhood'])) {
             $this->neighborhood($data['neighborhood']);
         }
-        if(isset($data['city'])) {
+        if (isset($data['city'])) {
             $this->city($data['city']);
         }
-        if(isset($data['state'])) {
+        if (isset($data['state'])) {
             $this->state($data['state']);
         }
-        if(isset($data['zipCode'])) {
+        if (isset($data['zipCode'])) {
             $this->zipCode($data['zipCode']);
         }
-        if(isset($data['mailToSend'])) {
+        if (isset($data['mailToSend'])) {
             $this->mailToSend($data['mailToSend']);
         }
-        if(isset($data['phoneToSend'])) {
+        if (isset($data['phoneToSend'])) {
             $this->phoneToSend($data['phoneToSend']);
         }
-        if(isset($data['externalNumber'])) {
+        if (isset($data['externalNumber'])) {
             $this->externalNumber($data['externalNumber']);
         }
-        if(isset($data['identifier'])) {
+        if (isset($data['identifier'])) {
             $this->identifier($data['identifier']);
         }
-        if(isset($data['comments'])) {
+        if (isset($data['comments'])) {
             $this->comments($data['comments']);
         }
-        if(isset($data['registration'])) {
+        if (isset($data['registration'])) {
             $this->registration($data['registration']);
         }
-        if(isset($data['dueDate'])) {
+        if (isset($data['dueDate'])) {
             $this->dueDate($data['dueDate']);
         }
-        if(isset($data['fineDate'])) {
+        if (isset($data['fineDate'])) {
             $this->fineDate($data['fineDate']);
         }
-        if(isset($data['discountDate'])) {
+        if (isset($data['discountDate'])) {
             $this->discountDate($data['discountDate']);
         }
-        if(isset($data['finePercent'])) {
+        if (isset($data['finePercent'])) {
             $this->finePercent($data['finePercent']);
         }
-        if(isset($data['fineValue'])) {
+        if (isset($data['fineValue'])) {
             $this->fineValue($data['fineValue']);
         }
-        if(isset($data['rateValueType'])) {
+        if (isset($data['rateValueType'])) {
             $this->rateValueType($data['rateValueType']);
         }
-        if(isset($data['rateValue'])) {
+        if (isset($data['rateValue'])) {
             $this->rateValue($data['rateValue']);
         }
-        if(isset($data['rateSent'])) {
+        if (isset($data['rateSent'])) {
             $this->rateSent($data['rateSent']);
         }
-        if(isset($data['totalValue'])) {
+        if (isset($data['totalValue'])) {
             $this->totalValue($data['totalValue']);
         }
-        if(isset($data['rebateValue'])) {
+        if (isset($data['rebateValue'])) {
             $this->rebateValue($data['rebateValue']);
         }
-        if(isset($data['discountValue'])) {
+        if (isset($data['discountValue'])) {
             $this->discountValue($data['discountValue']);
         }
-        if(isset($data['interestValue'])) {
+        if (isset($data['interestValue'])) {
             $this->interestValue($data['interestValue']);
         }
-        if(isset($data['interestPercent'])) {
+        if (isset($data['interestPercent'])) {
             $this->interestPercent($data['interestPercent']);
         }
-        if(isset($data['installmentsNumber'])) {
+        if (isset($data['installmentsNumber'])) {
             $this->installmentsNumber($data['installmentsNumber']);
         }
-        if(isset($data['chargeType'])) {
+        if (isset($data['chargeType'])) {
             $this->chargeType($data['chargeType']);
         }
-        if(isset($data['products'])) {
+        if (isset($data['products'])) {
             $this->products($data['products']);
         }
     }
@@ -743,11 +743,10 @@ class Boleto
      */
     public function products(array $products)
     {
-        foreach($products as $product)
-        {
-            if($product instanceof Product) {
+        foreach ($products as $product) {
+            if ($product instanceof Product) {
                 $this->products[] = $product;
-            }else if (is_array($product)) {
+            } else if (is_array($product)) {
                 $this->products[] = new Product($product);
             }
         }
@@ -800,10 +799,11 @@ class Boleto
             'InstallmentsNumber'       => $this->installmentsNumber,
             'Comments'                 => $this->comments,
             'Carnet'                   => $this->isRecurring(),
-            'Products'                 => array_map(function($product) {return $product->toArray(); }, $this->products),
-        ], function($value) {
+            'Products'                 => array_map(function ($product) {
+                return $product->toArray();
+            }, $this->products),
+        ], function ($value) {
             return (is_array($value) && !empty($value)) || ((is_string($value) || is_numeric($value)) && !is_null($value) && $value != '');
         });
     }
-
 }

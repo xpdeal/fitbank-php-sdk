@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class PaymentGPS
 {
@@ -118,67 +118,67 @@ class PaymentGPS
      */
     public function __construct($data = [])
     {
-        if(isset($data['taxNumber'])) {
+        if (isset($data['taxNumber'])) {
             $this->taxNumber($data['taxNumber']);
         }
-        if(isset($data['contributorTaxNumber'])) {
+        if (isset($data['contributorTaxNumber'])) {
             $this->contributorTaxNumber($data['contributorTaxNumber']);
         }
-        if(isset($data['contributorDocumentType'])) {
+        if (isset($data['contributorDocumentType'])) {
             $this->contributorDocumentType($data['contributorDocumentType']);
         }
-        if(isset($data['paymentCode'])) {
+        if (isset($data['paymentCode'])) {
             $this->paymentCode($data['paymentCode']);
         }
-        if(isset($data['jurisdictionDate'])) {
+        if (isset($data['jurisdictionDate'])) {
             $this->jurisdictionDate($data['jurisdictionDate']);
         }
-        if(isset($data['paymentDate'])) {
+        if (isset($data['paymentDate'])) {
             $this->paymentDate($data['paymentDate']);
         }
-        if(isset($data['principalValue'])) {
+        if (isset($data['principalValue'])) {
             $this->principalValue($data['principalValue']);
         }
-        if(isset($data['fineInterestValue'])) {
+        if (isset($data['fineInterestValue'])) {
             $this->fineInterestValue($data['fineInterestValue']);
         }
-        if(isset($data['otherValues'])) {
+        if (isset($data['otherValues'])) {
             $this->otherValues($data['otherValues']);
         }
-        if(isset($data['referenceNumber'])) {
+        if (isset($data['referenceNumber'])) {
             $this->referenceNumber($data['referenceNumber']);
         }
-        if(isset($data['dueDate'])) {
+        if (isset($data['dueDate'])) {
             $this->dueDate($data['dueDate']);
         }
-        if(isset($data['identifier'])) {
+        if (isset($data['identifier'])) {
             $this->identifier($data['identifier']);
         }
-        if(isset($data['description'])) {
+        if (isset($data['description'])) {
             $this->description($data['description']);
         }
-        if(isset($data['rateValue'])) {
+        if (isset($data['rateValue'])) {
             $this->rateValue($data['rateValue']);
         }
-        if(isset($data['rateValueType'])) {
+        if (isset($data['rateValueType'])) {
             $this->rateValueType($data['rateValueType']);
         }
-        if(isset($data['bank'])) {
+        if (isset($data['bank'])) {
             $this->bank($data['bank']);
         }
-        if(isset($data['bankBranch'])) {
+        if (isset($data['bankBranch'])) {
             $this->bankBranch($data['bankBranch']);
         }
-        if(isset($data['bankAccount'])) {
+        if (isset($data['bankAccount'])) {
             $this->bankAccount($data['bankAccount']);
         }
-        if(isset($data['bankAccountDigit'])) {
+        if (isset($data['bankAccountDigit'])) {
             $this->bankAccountDigit($data['bankAccountDigit']);
         }
-        if(isset($data['mailToSend'])) {
+        if (isset($data['mailToSend'])) {
             $this->mailToSend($data['mailToSend']);
         }
-        if(isset($data['phoneToSend'])) {
+        if (isset($data['phoneToSend'])) {
             $this->phoneToSend($data['phoneToSend']);
         }
     }
@@ -264,7 +264,7 @@ class PaymentGPS
         $this->principalValue = $principalValue;
         return $this;
     }
-    
+
     /**
      * @param float $fineInterestValue
      */
@@ -383,7 +383,7 @@ class PaymentGPS
             'TaxNumber'               => $this->taxNumber,
             'ContributorDocumentType' => $this->contributorDocumentType,
             'ContributorTaxNumber'    => $this->contributorTaxNumber,
-            
+
             'FromBank'                => $this->bank,
             'FromBankBranch'          => $this->bankBranch,
             'FromBankAccount'         => $this->bankAccount,
@@ -395,22 +395,22 @@ class PaymentGPS
             'ReferenceNumber'         => $this->referenceNumber,
             'PaymentCode'             => $this->paymentCode,
             'JurisdictionDate'        => $this->jurisdictionDate,
-            
+
             'DueDate'                 => $this->dueDate,
             'PaymentDate'             => $this->paymentDate,
-            
+
             'PrincipalValue'          => $this->principalValue,
             'FineInterestValue'       => $this->fineInterestValue,
             'OtherValues'             => $this->otherValues,
-            
+
             'Description'             => $this->description,
             'Identifier'              => $this->identifier,
 
             'RateValue'               => $this->rateValue,
             'RateValueType'           => $this->rateValueType,
 
-            
-        ], function($value) {
+
+        ], function ($value) {
             return !is_null($value);
         });
     }

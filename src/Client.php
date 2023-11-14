@@ -1,23 +1,23 @@
 <?php
 
-namespace Hafael\Fitbank;
+namespace Paguesafe\Fitbank;
 
-use Hafael\Fitbank\Api\Account;
-use Hafael\Fitbank\Api\Boleto;
-use Hafael\Fitbank\Api\Card;
-use Hafael\Fitbank\Api\Dict;
-use Hafael\Fitbank\Api\Payment;
-use Hafael\Fitbank\Api\PeerToPeer;
-use Hafael\Fitbank\Api\Pix;
-use Hafael\Fitbank\Api\Ted;
-use Hafael\Fitbank\Api\TopUp;
-use Hafael\Fitbank\Api\User;
-use Hafael\Fitbank\Api\Withdrawal;
-use Hafael\Fitbank\Handler\Curl;
-use Hafael\Fitbank\Handler\Http;
-use Hafael\Fitbank\Contracts\RouteInterface;
-use Hafael\Fitbank\Contracts\ClientInterface;
-use Hafael\Fitbank\Exceptions\ClientException;
+use Paguesafe\Fitbank\Api\Account;
+use Paguesafe\Fitbank\Api\Boleto;
+use Paguesafe\Fitbank\Api\Card;
+use Paguesafe\Fitbank\Api\Dict;
+use Paguesafe\Fitbank\Api\Payment;
+use Paguesafe\Fitbank\Api\PeerToPeer;
+use Paguesafe\Fitbank\Api\Pix;
+use Paguesafe\Fitbank\Api\Ted;
+use Paguesafe\Fitbank\Api\TopUp;
+use Paguesafe\Fitbank\Api\User;
+use Paguesafe\Fitbank\Api\Withdrawal;
+use Paguesafe\Fitbank\Handler\Curl;
+use Paguesafe\Fitbank\Handler\Http;
+use Paguesafe\Fitbank\Contracts\RouteInterface;
+use Paguesafe\Fitbank\Contracts\ClientInterface;
+use Paguesafe\Fitbank\Exceptions\ClientException;
 
 /**
  * @method Account account()
@@ -91,7 +91,7 @@ class Client implements ClientInterface
      * @var bool
      */
     private $debugMode = false;
-    
+
     /**
      * The Client (not Eastwood)
      * 
@@ -258,7 +258,7 @@ class Client implements ClientInterface
     public function get(RouteInterface $route, $params = [], $headers = [])
     {
         return $this->buildRequest($route, Http::GET, $params, $headers)
-                    ->send();
+            ->send();
     }
 
     /**
@@ -273,7 +273,7 @@ class Client implements ClientInterface
     public function post(RouteInterface $route, $data, $headers = [])
     {
         return $this->buildRequest($route, Http::POST, [], $data, $headers)
-                    ->send();
+            ->send();
     }
 
     /**
@@ -288,7 +288,7 @@ class Client implements ClientInterface
     public function put(RouteInterface $route, $data, $headers = [])
     {
         return $this->buildRequest($route, Http::PUT, [], $data, $headers)
-                    ->send();
+            ->send();
     }
 
     /**
@@ -303,7 +303,7 @@ class Client implements ClientInterface
     public function patch(RouteInterface $route, $data, $headers = [])
     {
         return $this->buildRequest($route, Http::PATCH, [], $data, $headers)
-                    ->send();
+            ->send();
     }
 
     /**
@@ -317,7 +317,7 @@ class Client implements ClientInterface
     public function delete(RouteInterface $route, $data = [], $headers = [])
     {
         return $this->buildRequest($route, Http::DELETE, [], $data, $headers)
-                    ->send();
+            ->send();
     }
 
     /**
@@ -343,7 +343,7 @@ class Client implements ClientInterface
 
         $resource->setUrl($url);
 
-        if(! empty($data)) {
+        if (!empty($data)) {
             $resource->setBody(array_merge($data, [
                 'PartnerId'      => $this->getPartnerId(),
                 'BusinessUnitId' => $this->getBusinessUnitId(),
@@ -351,12 +351,11 @@ class Client implements ClientInterface
             ]));
         }
 
-        if(!empty($headers))
-        {
+        if (!empty($headers)) {
             $resource->addHeaders($headers);
         }
 
-        if($this->debugMode) {
+        if ($this->debugMode) {
             $resource->setDebugMode(true);
         }
 
@@ -372,7 +371,7 @@ class Client implements ClientInterface
     public function query($params)
     {
         $query = '';
-        if(! empty($params)) {
+        if (!empty($params)) {
             $query = '?' . http_build_query($params);
         }
         return $query;
@@ -400,7 +399,7 @@ class Client implements ClientInterface
      */
     public function __get($name)
     {
-        if(!array_key_exists(strtolower($name), static::API_RESOURCES)) {
+        if (!array_key_exists(strtolower($name), static::API_RESOURCES)) {
             throw new ClientException(sprintf('API Resource not exists: %s', $name));
         }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class RechargeCardRequest
 {
@@ -37,19 +37,19 @@ class RechargeCardRequest
      */
     public function __construct($data = [])
     {
-        if(isset($data['taxNumber'])) {
+        if (isset($data['taxNumber'])) {
             $this->taxNumber($data['taxNumber']);
         }
-        if(isset($data['prepaidCardId'])) {
+        if (isset($data['prepaidCardId'])) {
             $this->prepaidCardId($data['prepaidCardId']);
         }
-        if(isset($data['rechargeValue'])) {
+        if (isset($data['rechargeValue'])) {
             $this->rechargeValue($data['rechargeValue']);
         }
-        if(isset($data['identifier'])) {
+        if (isset($data['identifier'])) {
             $this->identifier($data['identifier']);
         }
-        if(isset($data['description'])) {
+        if (isset($data['description'])) {
             $this->description($data['description']);
         }
     }
@@ -111,12 +111,8 @@ class RechargeCardRequest
             'RechargeValue' => $this->rechargeValue,
             'Identifier'    => $this->identifier,
             'Description'   => $this->description,
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }
-
-    
-
-
 }

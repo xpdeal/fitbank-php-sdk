@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class MultipleP2PTransfer
 {
@@ -18,7 +18,7 @@ class MultipleP2PTransfer
      * @var BankAccount
      */
     public $bank;
-    
+
     /**
      * @var float
      */
@@ -71,34 +71,34 @@ class MultipleP2PTransfer
      */
     public function __construct($data = [])
     {
-        if(isset($data['taxNumber'])) {
+        if (isset($data['taxNumber'])) {
             $this->taxNumber($data['taxNumber']);
         }
-        if(isset($data['bank'])) {
+        if (isset($data['bank'])) {
             $this->bank($data['bank']);
         }
-        if(isset($data['totalValue'])) {
+        if (isset($data['totalValue'])) {
             $this->totalValue($data['totalValue']);
         }
-        if(isset($data['rateValue'])) {
+        if (isset($data['rateValue'])) {
             $this->rateValue($data['rateValue']);
         }
-        if(isset($data['rateValueType'])) {
+        if (isset($data['rateValueType'])) {
             $this->rateValueType($data['rateValueType']);
         }
-        if(isset($data['tags'])) {
+        if (isset($data['tags'])) {
             $this->tags($data['tags']);
         }
-        if(isset($data['description'])) {
+        if (isset($data['description'])) {
             $this->description($data['description']);
         }
-        if(isset($data['transferDate'])) {
+        if (isset($data['transferDate'])) {
             $this->transferDate($data['transferDate']);
         }
-        if(isset($data['internalTransfers'])) {
+        if (isset($data['internalTransfers'])) {
             $this->internalTransfers($data['internalTransfers']);
         }
-        if(isset($data['status'])) {
+        if (isset($data['status'])) {
             $this->status($data['status']);
         }
     }
@@ -190,12 +190,11 @@ class MultipleP2PTransfer
     public function internalTransfers(array $internalTransfers)
     {
 
-        if(is_array($internalTransfers)) {
-            foreach($internalTransfers as $transfer)
-            {
-                if($transfer instanceof P2PReceiver ) {
+        if (is_array($internalTransfers)) {
+            foreach ($internalTransfers as $transfer) {
+                if ($transfer instanceof P2PReceiver) {
                     $this->addTransfer($transfer);
-                }else if(is_array($transfer) && !empty($transfer)) {
+                } else if (is_array($transfer) && !empty($transfer)) {
                     $this->addTransfer(new P2PReceiver($transfer));
                 }
             }
@@ -226,7 +225,7 @@ class MultipleP2PTransfer
             'BankBranch'           => $this->bank->bankBranch,
             'BankAccount'          => $this->bank->bankAccount,
             'BankAccountDigit'     => $this->bank->bankAccountDigit,
-            'InternalTransfers'    => array_map(function($t) {
+            'InternalTransfers'    => array_map(function ($t) {
                 return $t->toArray();
             }, $this->internalTransfers),
             'TotalValue'           => $this->totalValue,
@@ -235,10 +234,8 @@ class MultipleP2PTransfer
             'Tags'                 => $this->tags,
             'Description'          => $this->description,
             'TransferDate'         => $this->transferDate,
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }
-
-
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class TopUpRequest
 {
@@ -51,25 +51,25 @@ class TopUpRequest
      */
     public function __construct($data = [])
     {
-        if(isset($data['productType'])) {
+        if (isset($data['productType'])) {
             $this->productType($data['productType']);
         }
-        if(isset($data['contractIdentifier'])) {
+        if (isset($data['contractIdentifier'])) {
             $this->contractIdentifier($data['contractIdentifier']);
         }
-        if(isset($data['batchIdentifier'])) {
+        if (isset($data['batchIdentifier'])) {
             $this->batchIdentifier($data['batchIdentifier']);
         }
-        if(isset($data['productKey'])) {
+        if (isset($data['productKey'])) {
             $this->productKey($data['productKey']);
         }
-        if(isset($data['productValue'])) {
+        if (isset($data['productValue'])) {
             $this->productValue($data['productValue']);
         }
-        if(isset($data['originNSU'])) {
+        if (isset($data['originNSU'])) {
             $this->originNSU($data['originNSU']);
         }
-        if(isset($data['fromBank'])) {
+        if (isset($data['fromBank'])) {
             $this->fromBank($data['fromBank']);
         }
     }
@@ -145,7 +145,7 @@ class TopUpRequest
      */
     public function fromBank($fromBank)
     {
-        if($fromBank instanceof BankAccount) {
+        if ($fromBank instanceof BankAccount) {
             $this->fromBank = $fromBank;
         } else {
             $this->fromBank = new BankAccount($fromBank);
@@ -171,7 +171,7 @@ class TopUpRequest
             'FromBankBranch'         => $this->fromBank->bankBranch,
             'FromBankAccount'        => $this->fromBank->bankAccount,
             'FromBankAccountDigit'   => $this->fromBank->bankAccountDigit,
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }

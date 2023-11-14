@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class MoneyTransferOut
 {
@@ -59,7 +59,7 @@ class MoneyTransferOut
      */
     public $status;
 
-    
+
     /**
      * Model constructor.
      * 
@@ -67,34 +67,34 @@ class MoneyTransferOut
      */
     public function __construct($data = [])
     {
-        if(isset($data['fromBank'])) {
+        if (isset($data['fromBank'])) {
             $this->fromBank($data['fromBank']);
         }
-        if(isset($data['toBank'])) {
+        if (isset($data['toBank'])) {
             $this->toBank($data['toBank']);
         }
-        if(isset($data['value'])) {
+        if (isset($data['value'])) {
             $this->value($data['value']);
         }
-        if(isset($data['rateValue'])) {
+        if (isset($data['rateValue'])) {
             $this->rateValue($data['rateValue']);
         }
-        if(isset($data['rateValueType'])) {
+        if (isset($data['rateValueType'])) {
             $this->rateValueType($data['rateValueType']);
         }
-        if(isset($data['identifier'])) {
+        if (isset($data['identifier'])) {
             $this->identifier($data['identifier']);
         }
-        if(isset($data['tags'])) {
+        if (isset($data['tags'])) {
             $this->tags($data['tags']);
         }
-        if(isset($data['description'])) {
+        if (isset($data['description'])) {
             $this->description($data['description']);
         }
-        if(isset($data['paymentDate'])) {
+        if (isset($data['paymentDate'])) {
             $this->paymentDate($data['paymentDate']);
         }
-        if(isset($data['status'])) {
+        if (isset($data['status'])) {
             $this->status($data['status']);
         }
     }
@@ -215,10 +215,8 @@ class MoneyTransferOut
             'Tags'                 => $this->tags,
             'Description'          => $this->description,
             'PaymentDate'          => $this->paymentDate,
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }
-
-
 }

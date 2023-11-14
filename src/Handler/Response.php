@@ -1,10 +1,10 @@
 <?php
 
-namespace Hafael\Fitbank\Handler;
+namespace Paguesafe\Fitbank\Handler;
 
-use Hafael\Fitbank\Exceptions\ClientException;
-use Hafael\Fitbank\Exceptions\ServerException;
-use Hafael\Fitbank\Exceptions\ValidationException;
+use Paguesafe\Fitbank\Exceptions\ClientException;
+use Paguesafe\Fitbank\Exceptions\ServerException;
+use Paguesafe\Fitbank\Exceptions\ValidationException;
 
 class Response
 {
@@ -76,7 +76,7 @@ class Response
     {
         return $this->content;
     }
-    
+
     /**
      * @param string $content
      * @return Response
@@ -113,7 +113,7 @@ class Response
     public function json($key = null, $default = null)
     {
 
-        if (! $this->decoded) {
+        if (!$this->decoded) {
             $this->decoded = json_decode($this->getContent(), true);
         }
 
@@ -221,7 +221,7 @@ class Response
      */
     public function respondSuccess()
     {
-        return $this->getStatusCode() == 200 && (isset($this->json()['Success']) && filter_var($this->json()['Success'], FILTER_VALIDATE_BOOLEAN)); 
+        return $this->getStatusCode() == 200 && (isset($this->json()['Success']) && filter_var($this->json()['Success'], FILTER_VALIDATE_BOOLEAN));
     }
 
     /**
@@ -229,7 +229,7 @@ class Response
      */
     public function errorMessage()
     {
-        if($this->respondError()) {
+        if ($this->respondError()) {
             return $this->json()['Message'];
         }
         return null;
@@ -240,7 +240,7 @@ class Response
      */
     public function respondError()
     {
-        return ! $this->respondSuccess();
+        return !$this->respondSuccess();
     }
 
     /**
@@ -248,8 +248,8 @@ class Response
      */
     public function validationErrors()
     {
-        if($this->respondError() && isset($this->json()['Validation']) && !empty(isset($this->json()['Validation']))) {
-            return array_map(function($error) {
+        if ($this->respondError() && isset($this->json()['Validation']) && !empty(isset($this->json()['Validation']))) {
+            return array_map(function ($error) {
                 return $error['Value'];
             }, $this->json()['Validation']);
         }
@@ -269,13 +269,11 @@ class Response
      */
     public function throw()
     {
-        if(!$this->ok() && $this->isValidationError()) {
+        if (!$this->ok() && $this->isValidationError()) {
             throw (new ValidationException($this->errorMessage(), 422))->setValidationErrors($this->validationErrors());
-        }else if((!$this->ok() && $this->respondError())) {
+        } else if ((!$this->ok() && $this->respondError())) {
             throw new ClientException($this->errorMessage(), 400);
         }
         throw new ServerException('Server error', 500);
-
     }
-    
 }

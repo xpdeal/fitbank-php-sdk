@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class AtmInfo
 {
@@ -27,13 +27,13 @@ class AtmInfo
      */
     public function __construct($data = [])
     {
-        if(isset($data['taxNumber'])) {
+        if (isset($data['taxNumber'])) {
             $this->taxNumber($data['taxNumber']);
         }
-        if(isset($data['terminalId'])) {
+        if (isset($data['terminalId'])) {
             $this->terminalId($data['terminalId']);
         }
-        if(isset($data['originNsu'])) {
+        if (isset($data['originNsu'])) {
             $this->originNsu($data['originNsu']);
         }
     }
@@ -75,12 +75,8 @@ class AtmInfo
             'TaxNumber' => $this->taxNumber,
             'TerminalId'  => $this->terminalId,
             'OriginNSU' => $this->originNsu,
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }
-
-    
-
-
 }

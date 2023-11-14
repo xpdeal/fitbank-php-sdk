@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class MoneyTransferQuery
 {
@@ -44,7 +44,7 @@ class MoneyTransferQuery
      * @var string
      */
     public $schedulingDate;
-    
+
     /**
      * Model constructor.
      * 
@@ -52,28 +52,28 @@ class MoneyTransferQuery
      */
     public function __construct($data = [])
     {
-        if(isset($data['documentNumber'])) {
+        if (isset($data['documentNumber'])) {
             $this->documentNumber($data['documentNumber']);
         }
-        if(isset($data['taxNumber'])) {
+        if (isset($data['taxNumber'])) {
             $this->taxNumber($data['taxNumber']);
         }
-        if(isset($data['initialDate'])) {
+        if (isset($data['initialDate'])) {
             $this->initialDate($data['initialDate']);
         }
-        if(isset($data['finalDate'])) {
+        if (isset($data['finalDate'])) {
             $this->finalDate($data['finalDate']);
         }
-        if(isset($data['initialPaymentDate'])) {
+        if (isset($data['initialPaymentDate'])) {
             $this->initialPaymentDate($data['initialPaymentDate']);
         }
-        if(isset($data['finalPaymentDate'])) {
+        if (isset($data['finalPaymentDate'])) {
             $this->finalPaymentDate($data['finalPaymentDate']);
         }
-        if(isset($data['emissionDate'])) {
+        if (isset($data['emissionDate'])) {
             $this->emissionDate($data['emissionDate']);
         }
-        if(isset($data['schedulingDate'])) {
+        if (isset($data['schedulingDate'])) {
             $this->schedulingDate($data['schedulingDate']);
         }
     }
@@ -165,10 +165,8 @@ class MoneyTransferQuery
             'FinalPaymentDate',
             'EmissionDate',
             'SchedulingDate',
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }
-
-
 }

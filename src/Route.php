@@ -1,8 +1,8 @@
 <?php
 
-namespace Hafael\Fitbank;
+namespace Paguesafe\Fitbank;
 
-use Hafael\Fitbank\Contracts\RouteInterface;
+use Paguesafe\Fitbank\Contracts\RouteInterface;
 
 class Route implements RouteInterface
 {
@@ -29,7 +29,7 @@ class Route implements RouteInterface
     {
         $count = count($this->values);
         $pattern = '';
-        for($i = 0; $i < $count; $i++) {
+        for ($i = 0; $i < $count; $i++) {
             $pattern .= '%s';
         }
         return vsprintf($pattern, $this->values);

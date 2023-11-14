@@ -1,9 +1,9 @@
 <?php
 
-namespace Hafael\Fitbank\Api;
+namespace Paguesafe\Fitbank\Api;
 
-use Hafael\Fitbank\Models\TopUpRequest;
-use Hafael\Fitbank\Route;
+use Paguesafe\Fitbank\Models\TopUpRequest;
+use Paguesafe\Fitbank\Route;
 
 class TopUp extends Api
 {
@@ -70,5 +70,4 @@ class TopUp extends Api
             'OriginNSU'      => $originNSU,
         ]));
     }
-
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Hafael\Fitbank\Api;
+namespace Paguesafe\Fitbank\Api;
 
-use Hafael\Fitbank\Models\MoneyTransferP2P;
-use Hafael\Fitbank\Models\MultipleP2PTransfer;
-use Hafael\Fitbank\Route;
+use Paguesafe\Fitbank\Models\MoneyTransferP2P;
+use Paguesafe\Fitbank\Models\MultipleP2PTransfer;
+use Paguesafe\Fitbank\Route;
 
 class PeerToPeer extends Api
 {
@@ -78,6 +78,4 @@ class PeerToPeer extends Api
             'DocumentNumber' => $documentNumber,
         ]));
     }
-    
-
 }

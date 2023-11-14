@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class Product
 {
@@ -80,40 +80,40 @@ class Product
      */
     public function __construct($data = [])
     {
-        if(isset($data['sellerPersonType'])) {
+        if (isset($data['sellerPersonType'])) {
             $this->sellerPersonType($data['sellerPersonType']);
         }
-        if(isset($data['sellerName'])) {
+        if (isset($data['sellerName'])) {
             $this->sellerName($data['sellerName']);
         }
-        if(isset($data['sellerTaxNumber'])) {
+        if (isset($data['sellerTaxNumber'])) {
             $this->sellerTaxNumber($data['sellerTaxNumber']);
         }
-        if(isset($data['receiverPersonType'])) {
+        if (isset($data['receiverPersonType'])) {
             $this->receiverPersonType($data['receiverPersonType']);
         }
-        if(isset($data['receiverName'])) {
+        if (isset($data['receiverName'])) {
             $this->receiverName($data['receiverName']);
         }
-        if(isset($data['receiverTaxNumber'])) {
+        if (isset($data['receiverTaxNumber'])) {
             $this->receiverTaxNumber($data['receiverTaxNumber']);
         }
-        if(isset($data['reference'])) {
+        if (isset($data['reference'])) {
             $this->reference($data['reference']);
         }
-        if(isset($data['productCode'])) {
+        if (isset($data['productCode'])) {
             $this->productCode($data['productCode']);
         }
-        if(isset($data['productName'])) {
+        if (isset($data['productName'])) {
             $this->productName($data['productName']);
         }
-        if(isset($data['productQty'])) {
+        if (isset($data['productQty'])) {
             $this->productQty($data['productQty']);
         }
-        if(isset($data['productValue'])) {
+        if (isset($data['productValue'])) {
             $this->productValue($data['productValue']);
         }
-        if(isset($data['isAutomatic'])) {
+        if (isset($data['isAutomatic'])) {
             $this->isAutomatic($data['isAutomatic']);
         }
     }
@@ -250,7 +250,7 @@ class Product
             'BankAccount'        => empty($this->bank) ? null : $this->bank->bankAccount,
             'BankAccountDigit'   => empty($this->bank) ? null : $this->bank->bankAccountDigit,
             'AccountType'        => empty($this->bank) ? null : $this->bank->accountType,
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }

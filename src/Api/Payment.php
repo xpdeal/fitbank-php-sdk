@@ -1,16 +1,16 @@
 <?php
 
-namespace Hafael\Fitbank\Api;
+namespace Paguesafe\Fitbank\Api;
 
-use Hafael\Fitbank\Models\Boleto as BoletoModel;
-use Hafael\Fitbank\Models\BoletoOut;
-use Hafael\Fitbank\Models\PaymentDARF;
-use Hafael\Fitbank\Models\PaymentDARJ;
-use Hafael\Fitbank\Models\PaymentFGTS;
-use Hafael\Fitbank\Models\PaymentGARE;
-use Hafael\Fitbank\Models\PaymentGPS;
-use Hafael\Fitbank\Models\PaymentGRU;
-use Hafael\Fitbank\Route;
+use Paguesafe\Fitbank\Models\Boleto as BoletoModel;
+use Paguesafe\Fitbank\Models\BoletoOut;
+use Paguesafe\Fitbank\Models\PaymentDARF;
+use Paguesafe\Fitbank\Models\PaymentDARJ;
+use Paguesafe\Fitbank\Models\PaymentFGTS;
+use Paguesafe\Fitbank\Models\PaymentGARE;
+use Paguesafe\Fitbank\Models\PaymentGPS;
+use Paguesafe\Fitbank\Models\PaymentGRU;
+use Paguesafe\Fitbank\Route;
 
 class Payment extends Api
 {
@@ -291,7 +291,7 @@ class Payment extends Api
      */
     public function generateBoletoOut(BoletoOut $boleto)
     {
-        
+
         return $this->client->post(new Route(), $this->getBody(array_merge([
             'Method'    => 'GenerateBoletoOut',
         ], $boleto->toArray())));
@@ -305,7 +305,7 @@ class Payment extends Api
      */
     public function generatePaymentFGTS(PaymentFGTS $payment)
     {
-        
+
         return $this->client->post(new Route(), $this->getBody(array_merge([
             'Method'    => 'GeneratePaymentFGTS',
         ], $payment->toArray())));
@@ -375,5 +375,4 @@ class Payment extends Api
             'Method'    => 'GeneratePaymentGRU',
         ], $payment->toArray())));
     }
-
 }

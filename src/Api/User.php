@@ -1,9 +1,9 @@
 <?php
 
-namespace Hafael\Fitbank\Api;
+namespace Paguesafe\Fitbank\Api;
 
-use Hafael\Fitbank\Models\User as UserModel;
-use Hafael\Fitbank\Route;
+use Paguesafe\Fitbank\Models\User as UserModel;
+use Paguesafe\Fitbank\Route;
 
 class User extends Api
 {
@@ -36,5 +36,4 @@ class User extends Api
             'LockDescription' => $description,
         ]));
     }
-
 }

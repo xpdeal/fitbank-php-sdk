@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class PaymentGARE
 {
@@ -9,7 +9,7 @@ class PaymentGARE
      * @var string
      */
     public $taxNumber;
-    
+
     /**
      * @var string
      */
@@ -133,76 +133,76 @@ class PaymentGARE
      */
     public function __construct($data = [])
     {
-        if(isset($data['taxNumber'])) {
+        if (isset($data['taxNumber'])) {
             $this->taxNumber($data['taxNumber']);
         }
-        if(isset($data['contributorTaxNumber'])) {
+        if (isset($data['contributorTaxNumber'])) {
             $this->contributorTaxNumber($data['contributorTaxNumber']);
         }
-        if(isset($data['codeRevenue'])) {
+        if (isset($data['codeRevenue'])) {
             $this->codeRevenue($data['codeRevenue']);
         }
-        if(isset($data['gareType'])) {
+        if (isset($data['gareType'])) {
             $this->gareType($data['gareType']);
         }
-        if(isset($data['paymentDate'])) {
+        if (isset($data['paymentDate'])) {
             $this->paymentDate($data['paymentDate']);
         }
-        if(isset($data['principalValue'])) {
+        if (isset($data['principalValue'])) {
             $this->principalValue($data['principalValue']);
         }
-        if(isset($data['fineValue'])) {
+        if (isset($data['fineValue'])) {
             $this->fineValue($data['fineValue']);
         }
-        if(isset($data['interestValue'])) {
+        if (isset($data['interestValue'])) {
             $this->interestValue($data['interestValue']);
         }
-        if(isset($data['totalValue'])) {
+        if (isset($data['totalValue'])) {
             $this->totalValue($data['totalValue']);
         }
-        if(isset($data['stateRegistration'])) {
+        if (isset($data['stateRegistration'])) {
             $this->stateRegistration($data['stateRegistration']);
         }
-        if(isset($data['referenceNumber'])) {
+        if (isset($data['referenceNumber'])) {
             $this->referenceNumber($data['referenceNumber']);
         }
-        if(isset($data['dueDate'])) {
+        if (isset($data['dueDate'])) {
             $this->dueDate($data['dueDate']);
         }
-        if(isset($data['activeDebit'])) {
+        if (isset($data['activeDebit'])) {
             $this->activeDebit($data['activeDebit']);
         }
-        if(isset($data['quoteNumberNotification'])) {
+        if (isset($data['quoteNumberNotification'])) {
             $this->quoteNumberNotification($data['quoteNumberNotification']);
         }
-        if(isset($data['identifier'])) {
+        if (isset($data['identifier'])) {
             $this->identifier($data['identifier']);
         }
-        if(isset($data['description'])) {
+        if (isset($data['description'])) {
             $this->description($data['description']);
         }
-        if(isset($data['rateValue'])) {
+        if (isset($data['rateValue'])) {
             $this->rateValue($data['rateValue']);
         }
-        if(isset($data['rateValueType'])) {
+        if (isset($data['rateValueType'])) {
             $this->rateValueType($data['rateValueType']);
         }
-        if(isset($data['bank'])) {
+        if (isset($data['bank'])) {
             $this->bank($data['bank']);
         }
-        if(isset($data['bankBranch'])) {
+        if (isset($data['bankBranch'])) {
             $this->bankBranch($data['bankBranch']);
         }
-        if(isset($data['bankAccount'])) {
+        if (isset($data['bankAccount'])) {
             $this->bankAccount($data['bankAccount']);
         }
-        if(isset($data['bankAccountDigit'])) {
+        if (isset($data['bankAccountDigit'])) {
             $this->bankAccountDigit($data['bankAccountDigit']);
         }
-        if(isset($data['mailToSend'])) {
+        if (isset($data['mailToSend'])) {
             $this->mailToSend($data['mailToSend']);
         }
-        if(isset($data['phoneToSend'])) {
+        if (isset($data['phoneToSend'])) {
             $this->phoneToSend($data['phoneToSend']);
         }
     }
@@ -305,7 +305,7 @@ class PaymentGARE
         $this->principalValue = $principalValue;
         return $this;
     }
-    
+
     /**
      * @param float $fineValue
      */
@@ -432,7 +432,7 @@ class PaymentGARE
         return array_filter([
             'TaxNumber'               => $this->taxNumber,
             'ContributorTaxNumber'    => $this->contributorTaxNumber,
-            
+
             'FromBank'                => $this->bank,
             'FromBankBranch'          => $this->bankBranch,
             'FromBankAccount'         => $this->bankAccount,
@@ -454,15 +454,15 @@ class PaymentGARE
             'InterestValue'           => $this->interestValue,
             'TotalValue'              => $this->principalValue,
             'PaymentDate'             => $this->paymentDate,
-            
+
             'Description'             => $this->description,
             'Identifier'              => $this->identifier,
 
             'RateValue'               => $this->rateValue,
             'RateValueType'           => $this->rateValueType,
 
-            
-        ], function($value) {
+
+        ], function ($value) {
             return !is_null($value);
         });
     }

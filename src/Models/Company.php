@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class Company
 {
@@ -65,36 +65,36 @@ class Company
      */
     public function __construct($data = [])
     {
-        if(isset($data['companyType'])) {
+        if (isset($data['companyType'])) {
             $this->companyType($data['companyType']);
         }
-        if(isset($data['companyActivity'])) {
+        if (isset($data['companyActivity'])) {
             $this->companyActivity($data['companyActivity']);
         }
-        if(isset($data['constitutionDate'])) {
+        if (isset($data['constitutionDate'])) {
             $this->constitutionDate($data['constitutionDate']);
         }
-        if(isset($data['personName'])) {
+        if (isset($data['personName'])) {
             $this->personName($data['personName']);
         }
-        if(isset($data['nickname'])) {
+        if (isset($data['nickname'])) {
             $this->nickname($data['nickname']);
         }
-        if(isset($data['phoneNumber'])) {
+        if (isset($data['phoneNumber'])) {
             $this->phoneNumber($data['phoneNumber']);
         }
-        if(isset($data['mail'])) {
+        if (isset($data['mail'])) {
             $this->mail($data['mail']);
         }
-        if(isset($data['taxNumber'])) {
+        if (isset($data['taxNumber'])) {
             $this->taxNumber($data['taxNumber']);
         }
 
-        if(isset($data['address'])) {
+        if (isset($data['address'])) {
             $this->address($data['address']);
         }
 
-        if(isset($data['documents'])) {
+        if (isset($data['documents'])) {
             $this->documents($data['documents']);
         }
     }
@@ -190,9 +190,9 @@ class Company
      */
     public function address($address)
     {
-        if($address instanceof Address) {
+        if ($address instanceof Address) {
             $this->address = $address;
-        }else if (is_array($address)) {
+        } else if (is_array($address)) {
             $this->address = new Address($address);
         }
         return $this;
@@ -203,11 +203,10 @@ class Company
      */
     public function documents(array $documents)
     {
-        foreach($documents as $document)
-        {
-            if($document instanceof Document) {
+        foreach ($documents as $document) {
+            if ($document instanceof Document) {
                 $this->documents[] = $document;
-            }else if (is_array($document)) {
+            } else if (is_array($document)) {
                 $this->documents[] = new Document($document);
             }
         }

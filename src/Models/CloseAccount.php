@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class CloseAccount
 {
@@ -25,7 +25,7 @@ class CloseAccount
      */
     public $justification;
 
-    
+
     /**
      * Model constructor.
      * 
@@ -33,16 +33,16 @@ class CloseAccount
      */
     public function __construct($data = [])
     {
-        if(isset($data['accountKeys'])) {
+        if (isset($data['accountKeys'])) {
             $this->accountKeys($data['accountKeys']);
         }
-        if(isset($data['taxNumber'])) {
+        if (isset($data['taxNumber'])) {
             $this->taxNumber($data['taxNumber']);
         }
-        if(isset($data['accounts'])) {
+        if (isset($data['accounts'])) {
             $this->accounts($data['accounts']);
         }
-        if(isset($data['justification'])) {
+        if (isset($data['justification'])) {
             $this->justification($data['justification']);
         }
     }
@@ -95,10 +95,8 @@ class CloseAccount
             'AccountKeys',
             'Accounts',
             'Justification',
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }
-
-
 }

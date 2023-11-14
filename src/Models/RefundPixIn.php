@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class RefundPixIn
 {
@@ -42,7 +42,7 @@ class RefundPixIn
      * @var string
      */
     public $pixKey;
-    
+
     /**
      * @var string
      */
@@ -62,7 +62,7 @@ class RefundPixIn
      * @var string
      */
     public $bankAccount;
-    
+
     /**
      * @var string
      */
@@ -82,7 +82,7 @@ class RefundPixIn
      * @var string
      */
     public $toBbankAccount;
-    
+
     /**
      * @var string
      */
@@ -127,7 +127,7 @@ class RefundPixIn
      * @var int
      */
     public $status;
-    
+
     /**
      * Model constructor.
      * 
@@ -135,60 +135,60 @@ class RefundPixIn
      */
     public function __construct($data = [])
     {
-        if(isset($data['documentNumber'])) {
+        if (isset($data['documentNumber'])) {
             $this->documentNumber($data['documentNumber']);
         }
 
-        if(isset($data['taxNumber'])) {
+        if (isset($data['taxNumber'])) {
             $this->taxNumber($data['taxNumber']);
         }
-        if(isset($data['bank'])) {
+        if (isset($data['bank'])) {
             $this->bank($data['bank']);
         }
-        if(isset($data['bankBranch'])) {
+        if (isset($data['bankBranch'])) {
             $this->bankBranch($data['bankBranch']);
         }
-        if(isset($data['bankAccount'])) {
+        if (isset($data['bankAccount'])) {
             $this->bankAccount($data['bankAccount']);
         }
-        if(isset($data['bankAccountDigit'])) {
+        if (isset($data['bankAccountDigit'])) {
             $this->bankAccountDigit($data['bankAccountDigit']);
         }
-        
-        if(isset($data['toTaxNumber'])) {
+
+        if (isset($data['toTaxNumber'])) {
             $this->toTaxNumber($data['toTaxNumber']);
         }
-        if(isset($data['toBank'])) {
+        if (isset($data['toBank'])) {
             $this->toBank($data['toBank']);
         }
-        if(isset($data['toBankBranch'])) {
+        if (isset($data['toBankBranch'])) {
             $this->toBankBranch($data['toBankBranch']);
         }
-        if(isset($data['toBankAccount'])) {
+        if (isset($data['toBankAccount'])) {
             $this->toBankAccount($data['toBankAccount']);
         }
-        if(isset($data['toBankAccountDigit'])) {
+        if (isset($data['toBankAccountDigit'])) {
             $this->toBankAccountDigit($data['toBankAccountDigit']);
         }
 
-        if(isset($data['status'])) {
+        if (isset($data['status'])) {
             $this->status($data['status']);
         }
-        
-        if(isset($data['refundValue'])) {
+
+        if (isset($data['refundValue'])) {
             $this->refundValue($data['refundValue']);
         }
-        if(isset($data['returnCode'])) {
+        if (isset($data['returnCode'])) {
             $this->returnCode($data['returnCode']);
         }
-        if(isset($data['customerMessage'])) {
+        if (isset($data['customerMessage'])) {
             $this->customerMessage($data['customerMessage']);
         }
-        
-        if(isset($data['description'])) {
+
+        if (isset($data['description'])) {
             $this->description($data['description']);
         }
-        if(isset($data['tags'])) {
+        if (isset($data['tags'])) {
             $this->tags($data['tags']);
         }
     }
@@ -374,9 +374,8 @@ class RefundPixIn
             'Tags'               => $this->tags,
             //Condition
             'Status'             => $this->status,
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }
-
 }

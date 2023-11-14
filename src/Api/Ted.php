@@ -1,11 +1,11 @@
 <?php
 
-namespace Hafael\Fitbank\Api;
+namespace Paguesafe\Fitbank\Api;
 
-use Hafael\Fitbank\Models\MoneyTransferIn;
-use Hafael\Fitbank\Models\MoneyTransferOut;
-use Hafael\Fitbank\Models\MoneyTransferQuery;
-use Hafael\Fitbank\Route;
+use Paguesafe\Fitbank\Models\MoneyTransferIn;
+use Paguesafe\Fitbank\Models\MoneyTransferOut;
+use Paguesafe\Fitbank\Models\MoneyTransferQuery;
+use Paguesafe\Fitbank\Route;
 
 class Ted extends Api
 {
@@ -151,6 +151,4 @@ class Ted extends Api
             'Method' => 'GetBanks',
         ]));
     }
-    
-
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Hafael\Fitbank\Exceptions;
+namespace Paguesafe\Fitbank\Exceptions;
 
-class ValidationException extends \Exception 
+class ValidationException extends \Exception
 {
     protected array $errors;
 

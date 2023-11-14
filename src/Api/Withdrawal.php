@@ -1,15 +1,15 @@
 <?php
 
-namespace Hafael\Fitbank\Api;
+namespace Paguesafe\Fitbank\Api;
 
-use Hafael\Fitbank\Models\AtmAvailability;
-use Hafael\Fitbank\Models\AtmInfo;
-use Hafael\Fitbank\Models\DigitalWithdrawal;
-use Hafael\Fitbank\Models\DigitalWithdrawalAuthorization;
-use Hafael\Fitbank\Models\DigitalWithdrawalCancellation;
-use Hafael\Fitbank\Models\DigitalWithdrawalQrCode;
-use Hafael\Fitbank\Models\DigitalWithdrawalStatus;
-use Hafael\Fitbank\Route;
+use Paguesafe\Fitbank\Models\AtmAvailability;
+use Paguesafe\Fitbank\Models\AtmInfo;
+use Paguesafe\Fitbank\Models\DigitalWithdrawal;
+use Paguesafe\Fitbank\Models\DigitalWithdrawalAuthorization;
+use Paguesafe\Fitbank\Models\DigitalWithdrawalCancellation;
+use Paguesafe\Fitbank\Models\DigitalWithdrawalQrCode;
+use Paguesafe\Fitbank\Models\DigitalWithdrawalStatus;
+use Paguesafe\Fitbank\Route;
 
 class Withdrawal extends Api
 {
@@ -39,7 +39,7 @@ class Withdrawal extends Api
             'Method' => 'GetBankTerminalInfos',
         ], $atm->toArray())));
     }
-    
+
     /**
      * GenerateDigitalWithdrawal
      * 
@@ -53,7 +53,7 @@ class Withdrawal extends Api
         ], $withdrawal->toArray())));
     }
 
-    
+
     /**
      * GetInfosByTokenDigitalWithdrawal
      * 
@@ -105,5 +105,4 @@ class Withdrawal extends Api
             'Method' => 'GetDigitalWithdrawal',
         ], $status->toArray())));
     }
-
 }

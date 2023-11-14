@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class UnnamedPrepaidCardRequest
 {
@@ -9,7 +9,7 @@ class UnnamedPrepaidCardRequest
      * @var int
      */
     public $usageType;
-    
+
     /**
      * @var int
      */
@@ -37,19 +37,19 @@ class UnnamedPrepaidCardRequest
      */
     public function __construct($data = [])
     {
-        if(isset($data['usageType'])) {
+        if (isset($data['usageType'])) {
             $this->usageType($data['usageType']);
         }
-        if(isset($data['consumeType'])) {
+        if (isset($data['consumeType'])) {
             $this->consumeType($data['consumeType']);
         }
-        if(isset($data['identifierProduct'])) {
+        if (isset($data['identifierProduct'])) {
             $this->identifierProduct($data['identifierProduct']);
         }
-        if(isset($data['cardOwner'])) {
+        if (isset($data['cardOwner'])) {
             $this->cardOwner($data['cardOwner']);
         }
-        if(isset($data['cardDeliveryAddress'])) {
+        if (isset($data['cardDeliveryAddress'])) {
             $this->cardDeliveryAddress($data['cardDeliveryAddress']);
         }
     }
@@ -87,9 +87,9 @@ class UnnamedPrepaidCardRequest
      */
     public function cardOwner($cardOwner)
     {
-        if($cardOwner instanceof CardOwner) {
+        if ($cardOwner instanceof CardOwner) {
             $this->cardOwner = $cardOwner;
-        }else if (is_array($cardOwner)) {
+        } else if (is_array($cardOwner)) {
             $this->cardOwner = new CardOwner($cardOwner);
         }
         return $this;
@@ -100,9 +100,9 @@ class UnnamedPrepaidCardRequest
      */
     public function cardDeliveryAddress($cardDeliveryAddress)
     {
-        if($cardDeliveryAddress instanceof Address) {
+        if ($cardDeliveryAddress instanceof Address) {
             $this->cardDeliveryAddress = $cardDeliveryAddress;
-        }else if (is_array($cardDeliveryAddress)) {
+        } else if (is_array($cardDeliveryAddress)) {
             $this->cardDeliveryAddress = new Address($cardDeliveryAddress);
         }
         return $this;
@@ -120,12 +120,8 @@ class UnnamedPrepaidCardRequest
             'IdentifierProduct'   => $this->identifierProduct,
             'CardOwner'           => $this->cardOwner->toArray(),
             'CardDeliveryAddress' => $this->cardDeliveryAddress->toArray(),
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }
-
-    
-
-
 }

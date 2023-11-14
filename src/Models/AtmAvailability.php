@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class AtmAvailability
 {
@@ -9,7 +9,7 @@ class AtmAvailability
      * @var string
      */
     public $taxNumber;
-    
+
     /**
      * @var string
      */
@@ -47,25 +47,25 @@ class AtmAvailability
      */
     public function __construct($data = [])
     {
-        if(isset($data['taxNumber'])) {
+        if (isset($data['taxNumber'])) {
             $this->taxNumber($data['taxNumber']);
         }
-        if(isset($data['latitude'])) {
+        if (isset($data['latitude'])) {
             $this->latitude($data['latitude']);
         }
-        if(isset($data['longitude'])) {
+        if (isset($data['longitude'])) {
             $this->longitude($data['longitude']);
         }
-        if(isset($data['terminal'])) {
+        if (isset($data['terminal'])) {
             $this->terminal($data['terminal']);
         }
-        if(isset($data['acess'])) {
+        if (isset($data['acess'])) {
             $this->acess($data['acess']);
         }
-        if(isset($data['limit'])) {
+        if (isset($data['limit'])) {
             $this->limit($data['limit']);
         }
-        if(isset($data['originNsu'])) {
+        if (isset($data['originNsu'])) {
             $this->originNsu($data['originNsu']);
         }
     }
@@ -147,12 +147,8 @@ class AtmAvailability
             'Acess'     => $this->acess,
             'Limit'     => $this->limit,
             'OriginNSU' => $this->originNsu,
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }
-
-    
-
-
 }

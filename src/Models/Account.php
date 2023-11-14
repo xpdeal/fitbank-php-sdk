@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class Account
 {
@@ -91,7 +91,7 @@ class Account
      * @var Company
      */
     public $company;
-    
+
     /**
      * Model constructor.
      * 
@@ -99,46 +99,46 @@ class Account
      */
     public function __construct($data = [])
     {
-        if(isset($data['profileType'])) {
+        if (isset($data['profileType'])) {
             $this->profileType($data['profileType']);
         }
-        if(isset($data['status'])) {
+        if (isset($data['status'])) {
             $this->status($data['status']);
         }
-        if(isset($data['condition'])) {
+        if (isset($data['condition'])) {
             $this->condition($data['condition']);
         }
-        if(isset($data['accountId'])) {
+        if (isset($data['accountId'])) {
             $this->accountId($data['accountId']);
         }
-        if(isset($data['accountKey'])) {
+        if (isset($data['accountKey'])) {
             $this->accountKey($data['accountKey']);
         }
-        if(isset($data['spbAccount'])) {
+        if (isset($data['spbAccount'])) {
             $this->spbAccount($data['spbAccount']);
         }
-        if(isset($data['bank'])) {
+        if (isset($data['bank'])) {
             $this->bank($data['bank']);
         }
-        if(isset($data['bankBranch'])) {
+        if (isset($data['bankBranch'])) {
             $this->bankBranch($data['bankBranch']);
         }
-        if(isset($data['bankAccount'])) {
+        if (isset($data['bankAccount'])) {
             $this->bankAccount($data['bankAccount']);
         }
-        if(isset($data['bankAccountDigit'])) {
+        if (isset($data['bankAccountDigit'])) {
             $this->bankAccountDigit($data['bankAccountDigit']);
         }
-        if(isset($data['holder'])) {
+        if (isset($data['holder'])) {
             $this->holder($data['holder']);
         }
-        if(isset($data['addresses'])) {
+        if (isset($data['addresses'])) {
             $this->addresses($data['addresses']);
         }
-        if(isset($data['documents'])) {
+        if (isset($data['documents'])) {
             $this->documents($data['documents']);
         }
-        if(isset($data['persons'])) {
+        if (isset($data['persons'])) {
             $this->persons($data['persons']);
         }
     }
@@ -238,11 +238,9 @@ class Account
      */
     public function holder()
     {
-        if($this->profileType !== self::PROFILE_TYPE_COMPANY)
-        {
-            foreach($this->persons as $person)
-            {
-                if($person->personRoleType === Person::ROLE_TYPE_HOLDER) {
+        if ($this->profileType !== self::PROFILE_TYPE_COMPANY) {
+            foreach ($this->persons as $person) {
+                if ($person->personRoleType === Person::ROLE_TYPE_HOLDER) {
                     return $person;
                 }
             }
@@ -256,7 +254,7 @@ class Account
      */
     public function company($company)
     {
-        if($company instanceof Company) {
+        if ($company instanceof Company) {
             $this->company = $company;
         } else {
             $this->company = new Company($company);
@@ -269,11 +267,10 @@ class Account
      */
     public function addresses(array $addresses)
     {
-        foreach($addresses as $address)
-        {
-            if($address instanceof Address) {
+        foreach ($addresses as $address) {
+            if ($address instanceof Address) {
                 $this->addresses[] = $address;
-            }else if (is_array($address)) {
+            } else if (is_array($address)) {
                 $this->addresses[] = new Address($address);
             }
         }
@@ -285,11 +282,10 @@ class Account
      */
     public function documents(array $documents)
     {
-        foreach($documents as $document)
-        {
-            if($document instanceof Document) {
+        foreach ($documents as $document) {
+            if ($document instanceof Document) {
                 $this->documents[] = $document;
-            }else if (is_array($document)) {
+            } else if (is_array($document)) {
                 $this->documents[] = new Document($document);
             }
         }
@@ -301,11 +297,10 @@ class Account
      */
     public function persons(array $persons)
     {
-        foreach($persons as $person)
-        {
-            if($person instanceof Person) {
+        foreach ($persons as $person) {
+            if ($person instanceof Person) {
                 $this->persons[] = $person;
-            }else if (is_array($person)) {
+            } else if (is_array($person)) {
                 $this->persons[] = new Person($person);
             }
         }
@@ -318,24 +313,28 @@ class Account
      */
     public function toArray()
     {
-        
+
         $persons = array_filter(
-            array_map(function($person){
+            array_map(function ($person) {
                 return $person->toArray();
-            }, $this->persons), 
-            function($person) {
+            }, $this->persons),
+            function ($person) {
                 return $person['PersonRoleType'] !== Person::ROLE_TYPE_HOLDER;
             }
         );
 
         $holder = $this->holder();
 
-        $documents = array_map(function($document){return $document->toArray();}, $holder->documents);
+        $documents = array_map(function ($document) {
+            return $document->toArray();
+        }, $holder->documents);
         $addresses = [$holder->address->toArray()];
 
-        if($this->profileType === self::PROFILE_TYPE_COMPANY) {
+        if ($this->profileType === self::PROFILE_TYPE_COMPANY) {
             $addresses[] = $this->company->address->toArray();
-            $documents[] = array_map(function($document){return $document->toArray();}, $this->company->documents);
+            $documents[] = array_map(function ($document) {
+                return $document->toArray();
+            }, $this->company->documents);
         }
 
         $data = array_merge([
@@ -347,11 +346,11 @@ class Account
             'Addresses'        => $addresses,
             'Documents'        => $documents,
             'Persons'          => $persons,
-        ], array_filter($this->holder()->toArray(), function($k) {
+        ], array_filter($this->holder()->toArray(), function ($k) {
             return !in_array($k, ['PersonDocuments', 'PersonRoleType']);
         }, ARRAY_FILTER_USE_KEY));
 
-        return array_filter($data, function($v) {
+        return array_filter($data, function ($v) {
             return (!is_array($v) && !is_null($v)) || (is_array($v) && !empty($v));
         });
     }

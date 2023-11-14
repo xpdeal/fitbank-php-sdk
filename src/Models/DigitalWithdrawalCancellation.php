@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class DigitalWithdrawalCancellation
 {
@@ -27,13 +27,13 @@ class DigitalWithdrawalCancellation
      */
     public function __construct($data = [])
     {
-        if(isset($data['taxNumber'])) {
+        if (isset($data['taxNumber'])) {
             $this->taxNumber($data['taxNumber']);
         }
-        if(isset($data['documentNumber'])) {
+        if (isset($data['documentNumber'])) {
             $this->documentNumber($data['documentNumber']);
         }
-        if(isset($data['originNsu'])) {
+        if (isset($data['originNsu'])) {
             $this->originNsu($data['originNsu']);
         }
     }
@@ -75,12 +75,8 @@ class DigitalWithdrawalCancellation
             'TaxNumber'          => $this->taxNumber,
             'DocumentNumber'     => $this->documentNumber,
             'OriginNSU'          => $this->originNsu,
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }
-
-    
-
-
 }

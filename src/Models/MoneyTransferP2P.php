@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class MoneyTransferP2P
 {
@@ -29,7 +29,7 @@ class MoneyTransferP2P
      * @var string
      */
     public $toTaxNumber;
-    
+
     /**
      * @var float
      */
@@ -75,7 +75,7 @@ class MoneyTransferP2P
      */
     public $status;
 
-    
+
     /**
      * Model constructor.
      * 
@@ -83,43 +83,43 @@ class MoneyTransferP2P
      */
     public function __construct($data = [])
     {
-        if(isset($data['fromTaxNumber'])) {
+        if (isset($data['fromTaxNumber'])) {
             $this->fromTaxNumber($data['fromTaxNumber']);
         }
-        if(isset($data['fromBank'])) {
+        if (isset($data['fromBank'])) {
             $this->fromBank($data['fromBank']);
         }
-        if(isset($data['toTaxNumber'])) {
+        if (isset($data['toTaxNumber'])) {
             $this->toTaxNumber($data['toTaxNumber']);
         }
-        if(isset($data['toBank'])) {
+        if (isset($data['toBank'])) {
             $this->toBank($data['toBank']);
         }
-        if(isset($data['value'])) {
+        if (isset($data['value'])) {
             $this->value($data['value']);
         }
-        if(isset($data['rateValue'])) {
+        if (isset($data['rateValue'])) {
             $this->rateValue($data['rateValue']);
         }
-        if(isset($data['rateValueType'])) {
+        if (isset($data['rateValueType'])) {
             $this->rateValueType($data['rateValueType']);
         }
-        if(isset($data['identifier'])) {
+        if (isset($data['identifier'])) {
             $this->identifier($data['identifier']);
         }
-        if(isset($data['tags'])) {
+        if (isset($data['tags'])) {
             $this->tags($data['tags']);
         }
-        if(isset($data['description'])) {
+        if (isset($data['description'])) {
             $this->description($data['description']);
         }
-        if(isset($data['transferDate'])) {
+        if (isset($data['transferDate'])) {
             $this->transferDate($data['transferDate']);
         }
-        if(isset($data['category'])) {
+        if (isset($data['category'])) {
             $this->category($data['category']);
         }
-        if(isset($data['status'])) {
+        if (isset($data['status'])) {
             $this->status($data['status']);
         }
     }
@@ -268,10 +268,8 @@ class MoneyTransferP2P
             'Tags'                 => $this->tags,
             'Description'          => $this->description,
             'TransferDate'         => $this->transferDate,
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }
-
-
 }

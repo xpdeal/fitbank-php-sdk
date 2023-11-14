@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class DigitalWithdrawal
 {
@@ -9,7 +9,7 @@ class DigitalWithdrawal
      * @var string
      */
     public $taxNumber;
-    
+
     /**
      * @var float
      */
@@ -47,28 +47,28 @@ class DigitalWithdrawal
      */
     public function __construct($data = [])
     {
-        if(isset($data['fromBank'])) {
+        if (isset($data['fromBank'])) {
             $this->fromBank($data['fromBank']);
         }
-        if(isset($data['taxNumber'])) {
+        if (isset($data['taxNumber'])) {
             $this->taxNumber($data['taxNumber']);
         }
-        if(isset($data['value'])) {
+        if (isset($data['value'])) {
             $this->value($data['value']);
         }
-        if(isset($data['identifier'])) {
+        if (isset($data['identifier'])) {
             $this->identifier($data['identifier']);
         }
-        if(isset($data['nsu'])) {
+        if (isset($data['nsu'])) {
             $this->nsu($data['nsu']);
         }
-        if(isset($data['documentNumber'])) {
+        if (isset($data['documentNumber'])) {
             $this->documentNumber($data['documentNumber']);
         }
-        if(isset($data['rateValue'])) {
+        if (isset($data['rateValue'])) {
             $this->rateValue($data['rateValue']);
         }
-        if(isset($data['rateValueType'])) {
+        if (isset($data['rateValueType'])) {
             $this->rateValueType($data['rateValueType']);
         }
     }
@@ -159,7 +159,7 @@ class DigitalWithdrawal
             'RateValueType'    => $this->rateValueType,
         ];
 
-        if(!empty($this->fromBank)) {
+        if (!empty($this->fromBank)) {
             $data = array_merge($data, [
                 'Bank'             => $this->fromBank->bank,
                 'BankBranch'       => $this->fromBank->bankBranch,
@@ -168,12 +168,8 @@ class DigitalWithdrawal
             ]);
         }
 
-        return array_filter($data, function($value) {
+        return array_filter($data, function ($value) {
             return !is_null($value);
         });
     }
-
-    
-
-
 }

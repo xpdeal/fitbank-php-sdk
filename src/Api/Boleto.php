@@ -1,9 +1,9 @@
 <?php
 
-namespace Hafael\Fitbank\Api;
+namespace Paguesafe\Fitbank\Api;
 
-use Hafael\Fitbank\Models\Boleto as BoletoModel;
-use Hafael\Fitbank\Route;
+use Paguesafe\Fitbank\Models\Boleto as BoletoModel;
+use Paguesafe\Fitbank\Route;
 
 class Boleto extends Api
 {
@@ -113,5 +113,4 @@ class Boleto extends Api
             'Barcode'   => $barcodeNumber
         ]));
     }
-
 }

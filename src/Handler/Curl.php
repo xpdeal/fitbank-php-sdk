@@ -1,11 +1,11 @@
 <?php
 
-namespace Hafael\Fitbank\Handler;
+namespace Paguesafe\Fitbank\Handler;
 
 use Exception;
-use Hafael\Fitbank\Exceptions\ClientException;
-use Hafael\Fitbank\Exceptions\ServerException;
-use Hafael\Fitbank\Exceptions\ValidationException;
+use Paguesafe\Fitbank\Exceptions\ClientException;
+use Paguesafe\Fitbank\Exceptions\ServerException;
+use Paguesafe\Fitbank\Exceptions\ValidationException;
 
 class Curl
 {
@@ -106,7 +106,7 @@ class Curl
      */
     public function serialize($data)
     {
-        if(! is_array($data)) {
+        if (!is_array($data)) {
             throw new ClientException("Array expected.");
         }
         return json_encode($data);
@@ -162,7 +162,8 @@ class Curl
     private function buildHeaders()
     {
         curl_setopt(
-            $this->resource, CURLOPT_HTTPHEADER, 
+            $this->resource,
+            CURLOPT_HTTPHEADER,
             $this->getHeaders()
         );
     }
@@ -189,27 +190,24 @@ class Curl
         try {
             $return = $this->exec();
             $this->response
-                 ->setStatusCode((int)$return['http_code'])
-                 ->setContentType($return['content_type'])
-                 ->setContent($return['body']);
+                ->setStatusCode((int)$return['http_code'])
+                ->setContentType($return['content_type'])
+                ->setContent($return['body']);
 
-            if($this->isDebugMode) {
+            if ($this->isDebugMode) {
                 $this->response->setResponseLog($this->responseLog);
             }
-
-        } catch(ClientException $ex) {
+        } catch (ClientException $ex) {
             $this->handlerException($ex);
         }
 
-        if(!$this->response->ok() && $this->response->isValidationError()) {
-            
+        if (!$this->response->ok() && $this->response->isValidationError()) {
+
             throw (new ValidationException($this->response->errorMessage(), 422))->setValidationErrors($this->response->validationErrors());
+        } else if ((!$this->response->ok() && $this->response->respondError())) {
 
-        }else if((!$this->response->ok() && $this->response->respondError())) {
-            
             throw new ClientException($this->response->errorMessage(), 400);
-
-        }else if(curl_errno($this->resource)) {
+        } else if (curl_errno($this->resource)) {
             throw new ServerException('Server error', 500);
         }
 
@@ -222,11 +220,11 @@ class Curl
     public function handlerException(\Exception $ex)
     {
         $this->response->setStatusCode(500)
-             ->setContent(
-                 json_encode([
+            ->setContent(
+                json_encode([
                     'error' => $ex->getMessage()
-                 ])
-             );
+                ])
+            );
     }
 
     /**

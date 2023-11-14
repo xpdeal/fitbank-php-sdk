@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class CardHolderContact
 {
@@ -22,10 +22,10 @@ class CardHolderContact
      */
     public function __construct($data = [])
     {
-        if(isset($data['phone'])) {
+        if (isset($data['phone'])) {
             $this->phone($data['phone']);
         }
-        if(isset($data['mail'])) {
+        if (isset($data['mail'])) {
             $this->mail($data['mail']);
         }
     }
@@ -57,12 +57,8 @@ class CardHolderContact
         return array_filter([
             'Phone' => $this->phone,
             'Mail'  => $this->mail,
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }
-
-    
-
-
 }

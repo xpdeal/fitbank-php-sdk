@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class P2PReceiver
 {
@@ -19,7 +19,7 @@ class P2PReceiver
      * @var string
      */
     public $toTaxNumber;
-    
+
     /**
      * @var float
      */
@@ -42,19 +42,19 @@ class P2PReceiver
      */
     public function __construct($data = [])
     {
-        if(isset($data['toTaxNumber'])) {
+        if (isset($data['toTaxNumber'])) {
             $this->toTaxNumber($data['toTaxNumber']);
         }
-        if(isset($data['toBank'])) {
+        if (isset($data['toBank'])) {
             $this->toBank($data['toBank']);
         }
-        if(isset($data['value'])) {
+        if (isset($data['value'])) {
             $this->value($data['value']);
         }
-        if(isset($data['description'])) {
+        if (isset($data['description'])) {
             $this->description($data['description']);
         }
-        if(isset($data['identifier'])) {
+        if (isset($data['identifier'])) {
             $this->identifier($data['identifier']);
         }
     }
@@ -129,10 +129,8 @@ class P2PReceiver
             'Value'              => $this->value,
             'Description'        => $this->description,
             'Identifier'         => $this->identifier,
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }
-
-
 }

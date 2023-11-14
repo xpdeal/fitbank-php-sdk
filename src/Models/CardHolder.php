@@ -1,6 +1,6 @@
 <?php
 
-namespace Hafael\Fitbank\Models;
+namespace Paguesafe\Fitbank\Models;
 
 class CardHolder
 {
@@ -14,7 +14,7 @@ class CardHolder
      * @var string
      */
     public $fullName;
-    
+
     /**
      * @var string
      */
@@ -47,25 +47,25 @@ class CardHolder
      */
     public function __construct($data = [])
     {
-        if(isset($data['holderTaxNumber'])) {
+        if (isset($data['holderTaxNumber'])) {
             $this->holderTaxNumber($data['holderTaxNumber']);
         }
-        if(isset($data['fullName'])) {
+        if (isset($data['fullName'])) {
             $this->fullName($data['fullName']);
         }
-        if(isset($data['motherName'])) {
+        if (isset($data['motherName'])) {
             $this->motherName($data['motherName']);
         }
-        if(isset($data['birthDate'])) {
+        if (isset($data['birthDate'])) {
             $this->birthDate($data['birthDate']);
         }
-        if(isset($data['gender'])) {
+        if (isset($data['gender'])) {
             $this->gender($data['gender']);
         }
-        if(isset($data['nationality'])) {
+        if (isset($data['nationality'])) {
             $this->nationality($data['nationality']);
         }
-        if(isset($data['maritalStatus'])) {
+        if (isset($data['maritalStatus'])) {
             $this->maritalStatus($data['maritalStatus']);
         }
     }
@@ -148,12 +148,8 @@ class CardHolder
             'Gender'          => $this->gender,
             'Nationality'     => $this->nationality,
             'MaritalStatus'   => $this->maritalStatus,
-        ], function($value) {
+        ], function ($value) {
             return !is_null($value);
         });
     }
-
-    
-
-
 }
